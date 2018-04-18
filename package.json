@@ -1,0 +1,29 @@
+{
+  "name": "react-pc-ui",
+  "version": "1.0.0",
+  "description": "\"React PC 组件库(React pc component library)\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.coding.net/lianpf/react-pc-ui.git",
+    "webpack": "v4.6.0",
+    "webpack-cli": "^2.0.14",
+    "node": "v8.11.1",
+    "npm": "v5.6.0"
+  },
+  "keywords": [
+    "React",
+    "PC",
+    "component",
+    "library",
+    "antd"
+  ],
+  "author": "lianpf",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^2.0.14"
+  }
+}
