@@ -4,7 +4,7 @@ var merge = require('webpack-merge');
 var webpackBaseConfig = require('./webpack.base.config.js');
 module.exports = merge(webpackBaseConfig, {
     entry: {
-      qianliui: './src/components/index.js'
+      "react-pc-ui": './src/components/index.js'
     },
     output: {
       path: path.resolve(__dirname, '../lib'), //输出目标
