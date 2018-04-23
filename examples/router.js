@@ -19,12 +19,12 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Button from './button/index';
 import Table from './table/index';
 
-
 export default () => (
     <Router>
       <Switch>
         <Route path="/button" component={Button}/>
         <Route path="/table" component={Table}/>
+        <Route component={Button}/>
       </Switch>
     </Router>
 )
