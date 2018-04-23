@@ -1,7 +1,16 @@
 React PC componenet library
 
 ### npm包
-大模块 | 作用 | 包
-:---- | :---- | :---
-babel -> presets | 解析react | babel-cli & babel-preset-react
+
+**loader**  <br />
+
+包 | 作用
+:---- | :----
+babel-cli & babel-preset-react | 解析react
+
+**plugin**  <br />
+
+包 | 作用
+:---- | :----
+clean-webpack-plugin | 清除每次打包原dist内容
 
