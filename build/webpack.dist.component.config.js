@@ -1,20 +1,13 @@
-var path = require('path');
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var webpackBaseConfig = require('./webpack.base.config.js');
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const webpackBaseConfig = require('./webpack.base.config.js');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = merge(webpackBaseConfig, {
   // 多页面(入口)配置
   entry: {
-    button: './src/components/button.js',
-    loading: './src/components/loading.js',
-    video: './src/components/video.js',
-    picker: './src/components/picker.js',
-    popup: './src/components/popup.js',
-    baseList: './src/components/baseList.js',
-    swiper: './src/components/swiper.js',
-    toast: './src/components/toast.js',
-    tab: './src/components/tab.js',
-    slider: './src/components/slider.js'
+    button: './src/component/button/index.js',
+    table: './src/component/table/index.js',
   },
   /**
    * 多个入口起点
@@ -31,12 +24,11 @@ module.exports = merge(webpackBaseConfig, {
     'react-dom': 'reactDOM'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      comments: false,
-      sourceMap: false
+    new UglifyJSPlugin({
+      sourceMap: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 });
