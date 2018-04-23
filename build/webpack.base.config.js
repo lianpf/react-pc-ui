@@ -3,6 +3,7 @@
  * @author lianpf
  * @date 18-04-20
  */
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   /** 加载器
@@ -53,6 +54,9 @@ module.exports = {
       { test: /\.(html|tpl)$/, loader: 'html-loader' }
     ]
   },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.less', '.css']
   }
