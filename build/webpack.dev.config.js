@@ -30,6 +30,11 @@ module.exports = merge(webpackBaseConfig, {
     chunkFilename: '[name].chunk.js'
   },
   /**
+   * mode
+   * 环境
+   * */
+  mode: 'development',
+  /**
    * 插件
    * 插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量, 可以用来处理各种各样的任务
    * */
