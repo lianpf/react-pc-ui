@@ -1,10 +1,16 @@
-
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, hashHistory } from 'react-router';
-import RouterConfig from './router.js';
-import 'babel-polyfill';
-import './styles/index.less'
+import { Provider } from 'react-redux';
+import './config'
+import Routes from './router';
+// import configure from './store/configureStore'
+
+//
+const store = {};
+
 ReactDOM.render(
-  <RouterConfig/>
-, document.getElementById('app'));
+    <Provider store={store}>
+      <Routes />
+    </Provider>,
+    document.getElementById('root'),
+);
