@@ -3,6 +3,7 @@
  * @author lianpf
  * @date 18-04-20
  */
+var path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
+        exclude: [path.resolve(__dirname, 'node_modules')],
         use: [{
           loader: "style-loader" // creates style nodes from JS strings
         }, {
