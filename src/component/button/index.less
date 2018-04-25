@@ -1,28 +1,64 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-// import './config'
-import Routes from './router';
-// import configure from './store/configureStore'
+@import '../../common';
 
-console.log('--index-000--');
-function counter(state = 0, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
+.@{button} {
+  background: @color-red;
+  color: @color-white;
+  font-weight: normal;
+  border: 0;
+  box-sizing: border-box;
+  outline: 0;
+  //overflow: hidden;
+  //position: relative;
+  text-align: center;
+  padding: 10px 15px;
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+
+  ///* loging */
+  //.@{button}-loading{
+  //  animation: button-loading-rotate 0.8s infinite linear;
+  //  -webkit-animation: button-loading-rotate 0.8s infinite linear;
+  //  border: 2px solid transparent;
+  //  border-radius: 50%;
+  //  margin-right:10px;
+  //  display: inline-block;
+  //  vertical-align: sub;
+  //}
+  //.@{button}-loading-hidden{
+  //  display: none;
+  //}
 }
 
-const store = createStore(counter);
+///* size */
+//.@{button}-type-large{
+//  width: 100%;
+//  padding: 10px 0;
+//}
+//.@{button}-type-default{
+//  padding: 10px 50px;
+//}
+//.@{button}-type-small{
+//  border-radius: 5px;
+//  display: inline-block;
+//  padding: 5px 15px;
+//}
 
-ReactDOM.render(
-    <Provider store={store}>
-      <Routes />
-    </Provider>,
-    document.getElementById('root'),
-);
+///* radius */
+//.@{button}-radius{
+//  border-radius: 20px;
+//}
+///* disabled样式 */
+//.@{button}-disabled {
+//  background: #F2F2F2!important;
+//  color: #CECECE!important;
+//  border: 1px solid rgba(0, 0, 0, 0);
+//}
+//@keyframes button-loading-rotate {
+//  0% {
+//    transform: rotate(0deg);
+//  }
+//  100% {
+//    transform: rotate(360deg);
+//  }
+//}
