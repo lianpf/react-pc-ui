@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 
 // 组件 button
@@ -18,13 +18,19 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Button from './button/index';
 import Table from './table/index';
+import Layout from './layout/index';
+
+export const routes = [
+  {path: '/', exact: true, component: Layout, type: 'sync' },
+]
+
 
 export default () => (
     <Router>
       <Switch>
-        <Route path="/button" component={Button}/>
-        <Route path="/table" component={Table}/>
-        <Route component={Button}/>
+        <Route exact path="/" render={() => (<Redirect to="/component"/>)}/>
+        <Route path="/component" component={Layout}/>
+        <Route component={Layout}/>
       </Switch>
     </Router>
 )
