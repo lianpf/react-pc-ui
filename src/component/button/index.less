@@ -1,19 +1,20 @@
 @import '../../common';
 
 .@{button} {
+  display: inline-block;
+  height: 32px;
+  min-width: 80px;
+  padding: 10px 15px;
   background: @color-red;
   color: @color-white;
   font-weight: normal;
-  border: 0;
+  font-size: @fontSizeNormal;
   box-sizing: border-box;
-  outline: 0;
-  //overflow: hidden;
-  //position: relative;
   text-align: center;
-  padding: 10px 15px;
-  display: inline-block;
-  width: 100px;
-  height: 60px;
+  border: 0;
+  outline: 0;
+  border-radius: @button-radius;
+  cursor: pointer;
 
   ///* loging */
   //.@{button}-loading{
@@ -30,30 +31,27 @@
   //}
 }
 
-///* size */
-//.@{button}-type-large{
-//  width: 100%;
-//  padding: 10px 0;
-//}
-//.@{button}-type-default{
-//  padding: 10px 50px;
-//}
-//.@{button}-type-small{
-//  border-radius: 5px;
-//  display: inline-block;
-//  padding: 5px 15px;
-//}
+/* size */
+.@{button}-type-default{
+  padding: 0 15px;
+}
+.@{button}-type-large{
+  width: 100%;
+  padding: 10px 0;
+}
+.@{button}-type-small{
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 15px;
+}
 
-///* radius */
-//.@{button}-radius{
-//  border-radius: 20px;
-//}
-///* disabled样式 */
-//.@{button}-disabled {
-//  background: #F2F2F2!important;
-//  color: #CECECE!important;
-//  border: 1px solid rgba(0, 0, 0, 0);
-//}
+/* disabled样式 */
+.@{button}-disabled {
+  background: #F2F2F2!important;
+  color: #CECECE!important;
+  border: 1px solid rgba(0, 0, 0, 0);
+  cursor: not-allowed;
+}
 //@keyframes button-loading-rotate {
 //  0% {
 //    transform: rotate(0deg);
