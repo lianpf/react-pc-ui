@@ -1,3 +1,5 @@
+@import "../utils/common";
+
 @height: 653px;
 
 @fontSize12: 12px;
@@ -6,28 +8,25 @@
 @fontSize18: 18px;
 @fontSize48: 48px;
 
-@colorWhite: #fff;
-@colorGray: #f3f3f3;
-@colorGray2: #868686;
-@colorGray3: #eaeaea;
-@colorGray4: #cacaca;
-@colorRed: #ff3411;
-@colorPink: #fffbfa;
-@colorBlue: #3790F3;
 
 .layout{
-  //height: 713px;
   min-height: 713px;
   margin-top: 40px;
   margin-bottom: 109px;
   box-sizing: border-box;
+  min-width: @view-width;
   .leftMenu{
-    width: 265px;
-    //height: 100%;
+    float: left;
+    width: 16.7%;
+    min-width: 200px;
     min-height: 713px;
     box-sizing: border-box;
     margin-right: 10px;
-    background: @colorWhite;
+    background: @color-white;
+    border-right: 1px solid @color-gray-shallow;
+    &:after{
+      clear: both;
+    }
     li{
       position: relative;
     }
@@ -37,45 +36,16 @@
       height: 50%;
       text-decoration: none;
     }
-    .menuItem1:hover, .menuItem2:hover{
+    .menuItem:hover, .activeItem{
       background: @colorPink;
     }
-    .menuItem1{
-      width: 100%;
-      height: 210px;
-      padding-top: 29px;
-      box-sizing: border-box;
-      text-align: center;
-      .authText{
-        display: inline-block;
-        margin-top: 13px;
-        box-sizing: border-box;
-        color: black;
-        font-size: @fontSize16;
-        .goAuthText{
-          color: @colorBlue;
-          font-size: @fontSize14;
-          cursor: pointer;
-        }
-      }
-      .authTextRed{
-        color: @colorRed;
-      }
-      .authMobile{
-        color: @colorGray2;
-        display: inline-block;
-        box-sizing: border-box;
-        margin-top: 8px;
-        font-size: @fontSize14;
-      }
-    }
-    .menuItem2{
+    .menuItem{
       width: 100%;
       height: 56px;
       line-height: 56px;
       padding-left: 25px;
       box-sizing: border-box;
-      border-top: 1px solid @colorGray;
+      border-top: 1px solid @color-gray-shallow;
       a{
         width: 85%;
         height: 100%;
@@ -83,43 +53,36 @@
         font-size: 16px;
       }
     }
-    .activeItem0:before{
-      display: inline-block;
-      width: 5px;
-      height: 56px;
-      content: '';
-      background: @colorRed;
-      position: absolute;
-      left: 0;
-      top: 30%;
-    }
-    .activeItem1{
+    .activeItem{
       a{
         color: @colorRed;
       }
     }
-    .activeItem1:before{
+    .activeItem:after{
       display: inline-block;
-      width: 5px;
-      height: 55px;
+      width: 3px;
+      height: 56px;
       content: '';
       background: @colorRed;
       position: absolute;
-      left: 0;
+      right: 0;
+      top: 0;
     }
   }
   .rightContent{
-    width: 925px;
-    //height: 100%;
-    //min-height: 713px;
+    width: 80%;
+    height: 100%;
+    min-height: 713px;
+    vertical-align: top;
     //background: @colorWhite;
+    margin-left: 16.7%;
   }
 }
 .whiteLine{
   display: inline-block;
   width: 1px;
   height: 18px;
-  background: @colorWhite;
+  background: @color-white;
 }
 
 .flexParent{

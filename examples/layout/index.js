@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Button from '../button/index';
 import Table from '../table/index';
 
-import Styles from './index.less';
+import './index.less';
 import RedArrow from './img/redArrow.png';
 import names from 'classnames';
 
@@ -15,22 +15,22 @@ const menuListConfig = [
     isShow: true,
     text: '组件库',
     path: '/component',
-    exact: false,
-    main: Button
+    exact: true,
+    main: () => (<div>react-pc-library</div>)
   },
   {
     isShow: true,
-    text: 'Button',
+    text: 'Button 按钮',
     path: '/component/button',
-    exact: false,
-    main: Button
+    exact: true,
+    main: () => <Button />
   },
   {
     isShow: true,
-    text: 'Table',
-    path: '/table',
-    exact: false,
-    main: Table
+    text: 'Table 表格',
+    path: '/component/table',
+    exact: true,
+    main: () => <Table />
   }
 ];
 
@@ -53,29 +53,21 @@ class Index extends React.Component {
   }
 
   render() {
-    console.log('--haha--', location);
-    const { pathname } = location;
+    const { location: {pathname} } = this.props;
 
-    const activeUrl = getUrl(location.hash);
-    console.log('--activeUrl--', activeUrl);
-
-    // let activeMenu = menuListConfig.find(menu => {
-    //   return menu.path === '/user' ? pathname === menu.path : activeItemUrl.indexOf(menu.path) >= 0
-    // })
+    const activeUrl = pathname;
+    // console.log('--activeUrl--', activeUrl);
 
     return (
-        <div className={`${Styles.flexParent} ${Styles.layout}`} >
-          <div className={Styles.leftMenu}>
+        <div className={`layout`} >
+          <div className={`leftMenu`}>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
               {
                 menuListConfig.map((item, index) => {
                   if (item.isShow) {
                     return (
-                        <li key={index} className={names(Styles.menuItem2)} >
+                        <li key={index} className={names(`menuItem ${item.path === pathname ? `activeItem` : ''}`)} >
                           <Link to={item.path}>{item.text}</Link>
-                          {
-                            pathname.indexOf(item.path) > -1 ? (<img src={RedArrow} alt=""/>) : ''
-                          }
                         </li>
                     )
                   }
@@ -83,17 +75,21 @@ class Index extends React.Component {
               }
             </ul>
           </div>
-          <div className={Styles.rightContent}>
-            {
-              routes.map((route, index) => {
-                return <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.main}
-                />
-              })
-            }
+          <div className={`rightContent`}>
+            <Router>
+              <Switch>
+                {
+                  routes.map((route, index) => {
+                    return <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.main}
+                    />
+                  })
+                }
+              </Switch>
+            </Router>
           </div>
         </div>
     );
