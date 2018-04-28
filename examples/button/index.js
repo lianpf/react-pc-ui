@@ -24,11 +24,9 @@ class Index extends React.Component {
 
   render() {
     const Style = {"background": "green"};
-    // console.log('--styles--', styles);
     return (
-       <div>
-         <p>--展示-button-组件-0-</p>
-         <div className={`layout`}>hah</div>
+       <div className={`button-layout`}>
+         <div>--展示-button-组件-0-</div>
          <Button {...params}>Default</Button>
        </div>
     );
