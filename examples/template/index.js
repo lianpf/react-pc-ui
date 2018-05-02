@@ -10,7 +10,7 @@ class Index extends React.Component {
   render() {
     const { title, desc, params} = this.props;
     return (
-       <div className={`button-layout`}>
+       <div className={`template-layout`}>
          {this.props.children}
        </div>
     );
