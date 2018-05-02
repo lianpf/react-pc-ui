@@ -40,7 +40,7 @@ class Index extends React.Component {
 
           <h2>API</h2>
           {
-            options.api.length && options.api.map((item, index) => {
+            options.api && options.api.length && options.api.map((item, index) => {
               return (
                   <div key={`${item.name}-api-${index}`}>
                     <h4>{item.name}</h4>
