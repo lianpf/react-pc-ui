@@ -1,4 +1,5 @@
-import React, { Component, PropTypes }from 'react';
+import React, { Component }from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './index.less';
 
@@ -44,18 +45,18 @@ class Index extends Component {
   }
 }
 
-// Index.propTypes = {
-//   bgColor: PropTypes.string,
-//   color : PropTypes.string,
-//   type : PropTypes.string,
-//   onClick: PropTypes.func,
-//   loading: PropTypes.bool,
-//   loadingColor: PropTypes.string,
-//   loadingSize: PropTypes.number,
-//   disabled: PropTypes.bool,
-//   radius: PropTypes.number,
-//   fontSize: PropTypes.number
-// };
+Index.propTypes = {
+  bgColor: PropTypes.string,
+  color : PropTypes.string,
+  type : PropTypes.string,
+  onClick: PropTypes.func,
+  // loading: PropTypes.bool,
+  // loadingColor: PropTypes.string,
+  // loadingSize: PropTypes.number,
+  disabled: PropTypes.bool,
+  radius: PropTypes.number,
+  fontSize: PropTypes.number
+};
 
 // function mapStateToProps(state) {
 //   const { borrowMoney } = state;
