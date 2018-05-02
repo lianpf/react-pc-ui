@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 
 // import Button from '../../lib/button/index';
 import Button from '../../src/component/button/index';
-import './index.less';
+import '../template/index.less';
 
 import Template from '../template/index';
+import DemoPanel from '../template/demo-panel';
 
 const options = {
   title: 'Button',
@@ -112,41 +113,31 @@ class Index extends React.Component {
 
   render() {
     return (
-       <div className={`button-layout`}>
-         <h1>{options.title}</h1>
-         <p>描述: {options.desc}</p>
-         <h2>func</h2>
-         <p>{options.func}</p>
-         <h2>效果展示</h2>
-         <div className={'component-demo-list'}>
-           {
-             options.params.length && options.params.map((item, index) => {
-               return (
-                   <div key={index} className={'component-demo-item'}>
-                     <h4>属性: {item.name}</h4>
-                     <p>描述: {item.desc}</p>
-                     <p>字段类型: {item.type}</p>
-                     <h5>{item.name}属性示例:</h5>
-                     <p>默认: {item.default}</p>
-                     {
-                       item.values.length && item.values.map((demo, key) => {
-                         let params = {
-                           [item.name]: demo.value
-                         };
-                         return (
-                             <div className={'show-demo-item'} key={`${index}-${key}`}>
-                               <span>{demo.name}: {demo.value}</span>
-                               <Button {...params} onClick={this.onClick}>{options.title}</Button>
-                             </div>
-                         )
-                       })
-                     }
-                   </div>
-               );
-             })
-           }
-         </div>
-       </div>
+        <Template options={options}>
+          <div className={'component-demo-list'}>
+            {
+              options.params.length && options.params.map((item, index) => {
+                return (
+                    <DemoPanel item={item} key={index}>
+                      {
+                        item.values.length && item.values.map((demo, key) => {
+                          let params = {
+                            [item.name]: demo.value
+                          };
+                          return (
+                              <div className={'show-demo-item'} key={`${index}-${key}`}>
+                                <span>{demo.name}: {demo.value}</span>
+                                <Button {...params} onClick={this.onClick}>{options.title}</Button>
+                              </div>
+                          )
+                        })
+                      }
+                    </DemoPanel>
+                );
+              })
+            }
+          </div>
+        </Template>
     );
   }
 }
