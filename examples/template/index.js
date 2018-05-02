@@ -12,7 +12,7 @@ class Index extends React.Component {
   render() {
     const { options } = this.props;
     return (
-        <div className={`button-layout`}>
+        <div className={`show-example-layout`}>
           <h1>{options.title}</h1>
           <p>描述: {options.desc}</p>
           <h2>func</h2>
