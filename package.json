@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.coding.net/lianpf/react-pc-ui.git",
+    "url": "https://github.com/lianpf/react-pc-ui.git",
     "webpack": "v4.6.0",
     "webpack-cli": "^2.0.14",
     "node": "v8.11.1",
@@ -21,9 +21,15 @@
     "PC",
     "component",
     "library",
-    "antd"
+    "antd",
+    "JavaScript",
+    "UI",
+    "redux",
+    "react-redux",
+    "react-router",
+    "webpack"
   ],
-  "author": "lianpf",
+  "author": "https://github.com/lianpf",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
