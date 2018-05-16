@@ -1,0 +1,62 @@
+@import '../../utils/common';
+
+.@{button} {
+  display: inline-block;
+  height: 32px;
+  line-height: 1.5;
+  min-width: 80px;
+  background: @color-red;
+  color: @color-white;
+  font-weight: normal;
+  font-size: @fontSizeNormal;
+  box-sizing: border-box;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  border-radius: @button-radius;
+  cursor: pointer;
+}
+
+.message-container{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1070;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translate(0, -25%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  // @keyframes countdown {
+  //   from { width: 0; }
+  //   to { width: 100%; }
+  // }
+
+  .alert{
+    position: relative;
+    padding: 15px;
+    padding-right: 35px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    &-info{
+      background-color: #d9edf7;
+      border-color: #bcdff1;
+      color: #31708f;
+    }
+
+    &-msg{
+      max-width: 400px;
+      margin: 20px auto;
+      animation: fade-in .3s ease-out
+    }
+  }
+}
