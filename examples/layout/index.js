@@ -4,6 +4,8 @@ import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import Button from '../button/index';
 import Table from '../table/index';
+import Message from '../message/index';
+import Modal from '../modal/index';
 
 import './index.less';
 import RedArrow from './img/redArrow.png';
@@ -31,6 +33,20 @@ const menuListConfig = [
     path: '/component/table',
     exact: true,
     main: () => <Table />
+  },
+  {
+    isShow: true,
+    text: 'Modal 对话框',
+    path: '/component/modal',
+    exact: true,
+    main: () => <Modal />
+  },
+  {
+    isShow: true,
+    text: 'Message 全局',
+    path: '/component/message',
+    exact: true,
+    main: () => <Message />
   }
 ];
 
