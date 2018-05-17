@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 
-// import Button from '../../lib/button/index';
-import Button from '../../src/component/button/index';
+import Button from '../../lib/button/index';
 import '../template/index.less';
 
 import Template from '../template/index';
