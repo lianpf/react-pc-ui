@@ -8,6 +8,7 @@ module.exports = merge(webpackBaseConfig, {
   entry: {
     button: './src/component/button/index.js',
     table: './src/component/table/index.js',
+    message: './src/component/message/index.js',
   },
   /**
    * 多个入口起点
@@ -19,9 +20,13 @@ module.exports = merge(webpackBaseConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  /**
+   * 剥离了那些不需要改动的依赖模块
+   * 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies)
+   * */
   externals: {
     'react': 'react',
-    'react-dom': 'reactDOM'
+    'react-dom': 'react-dom',
   },
   plugins: [
     new UglifyJSPlugin({
