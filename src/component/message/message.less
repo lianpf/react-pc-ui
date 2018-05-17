@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-.message-container{
+.@{message} {
   position: fixed;
   top: 0;
   width: 100%;
@@ -39,24 +39,53 @@
   //   to { width: 100%; }
   // }
 
-  .alert{
+  &-content{
+    display: inline-block;
+    background: @color-white;
+    padding: 10px 16px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    height: 18px;
+    line-height: 18px;
+  }
+
+  &-common{
+    //position: relative;
+    box-sizing: border-box;
+    margin: 20px 0;
+    text-align: center;
+    color: @color-black;
+    animation: fade-in .3s ease-out;
+
+  }
+
+  &-icon{
     position: relative;
-    padding: 15px;
-    padding-right: 35px;
-    margin-bottom: 10px;
-    border: 1px solid transparent;
-    border-radius: 5px;
-
-    &-info{
-      background-color: #d9edf7;
-      border-color: #bcdff1;
-      color: #31708f;
+    display: inline-block;
+    vertical-align: top;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 8px;
+    img{
+      display: block;
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+  }
+  &-info{
+    background: @color-blue;
+  }
 
-    &-msg{
-      max-width: 400px;
-      margin: 20px auto;
-      animation: fade-in .3s ease-out
-    }
+  &-success{
+    background: @color-green;
+  }
+  &-error{
+    background: @color-red;
   }
 }

@@ -28,18 +28,18 @@ export default class Container extends Component {
 
   render() {
     const { messages } = this.state;
-    console.log('messages', messages);
+
     if (isEmpty(messages)) {
       return null;
     } else {
       return (
-          <div className="message-container">
+          <div className="react-pc-ui-message">
             {
               Object.keys(messages).map(key => (
                   <Message
                       key={key}
                       {...messages[key]}
-                      onClose={this.removeMessage}
+                      close={this.removeMessage}
                   />
               ))
             }
