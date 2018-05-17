@@ -7,43 +7,74 @@ import './message.less';
 const div = document.createElement('div');
 document.body.appendChild(div);
 
-function create(type) {
-  return (content, msg = {}) => {
-    if (typeof msg === 'string') {
-      msg = { type: msg };
-    }
-    if (type) {
-      msg.type = type;
-    }
+// init 数据
+const getInitParams = () => {
+  return {
+    id: nextUid(),
+    content: '',
+    duration: 5,
+    onClose: void 0
+  }
+};
 
-    msg.id = nextUid();
-    msg.content = content;
-    if (msg.duration !== undefined) {
-      msg.duration = msg.duration;
-    } else if (msg.type === 'error' || msg.type === 'danger') {
-      msg.duration = 0; // 如果类型是error, danger这信息不回消失
+// 策略模式 根据参数匹配
+const createMsgParams = {
+  0: (args) => {
+    return getInitParams()
+  },
+  1: (args) => {
+    if (typeof args[0] === 'string') {
+      return {
+        ...getInitParams(),
+        content: args[0],
+      }
     } else {
-      msg.duration = 5;
+      return getInitParams()
     }
-    /*
-    msg = {
-      id:
-      duration: 显示时长,
-      content: 显示的内容,
-      type: 信息的类型
+  },
+  2: (args) => {
+    if (typeof args[0] === 'string' && typeof args[1] === "number") {
+      return {
+        ...getInitParams(),
+        content: args[0],
+        duration: args[1],
+      }
+    } else if (typeof args[0] === 'string' && typeof args[1] === "function"){
+      return {
+        ...getInitParams(),
+        content: args[0],
+        onClose: args[1],
+      }
+    } else {
+      return getInitParams()
     }
-    */
-    ReactDOM.render(<Container />, div).addMessage(msg);
+  },
+  3: (args) => {
+    if (typeof args[0] === 'string' && typeof args[1] === "number" && typeof args[2] === "function") {
+      return {
+        ...getInitParams(),
+        content: args[0],
+        duration: args[1],
+        onClose: args[2]
+      }
+    } else {
+      return getInitParams()
+    }
+  },
+};
+
+function create(type) {
+  return (...args) => {
+    const msg = createMsgParams[args.length](args);
+    ReactDOM.render(<Container />, div).addMessage({type, ...msg});
   };
 }
 
 export default {
-  show: create()
-  /*
-  保留接口弹出信息的不同类型
+  /**
+   * 接口弹出信息的不同类型
+   * */
   success: create('success'),
   info: create('info'),
-  warning: create('warning'),
   error: create('error')
-  */
-};
+}
