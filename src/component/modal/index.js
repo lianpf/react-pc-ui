@@ -1,67 +1,54 @@
-import React, { Component }from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import './index.less';
+import Modal from './Modal';
+import confirm from './confirm';
 
-class Index extends Component {
-  static defaultProps = {
-    bgColor: '#DA3D42',
-    color: '#fff',
-    type : 'default',
-    loading: false,
-    loadingColor: '#FFFF00',
-    loadingSize: 14,
-    disabled: false,
-    radius: 20,
-    fontSize: 16
+// export { ActionButtonProps } from './ActionButton';
+// export { ModalProps, ModalFuncProps } from './Modal';
+// Modal =  (props) => {
+//   const config = {
+//     type: 'default',
+//     okCancel: true,
+//     ...props,
+//   };
+//   return confirm(config);
+// };
+
+Modal.confirm =  (props) => {
+  const config = {
+    type: 'confirm',
+    okCancel: true,
+    ...props,
   };
-  constructor(props) {
-    super(props);
-
-    this.clickFunction = this.clickFunction.bind(this);
-  }
-  clickFunction() {
-    if (this.props.onClick && this.props.disabled === false) {
-      this.props.onClick()
-    }
-  }
-
-  render() {
-    const { type, disabled, bgColor, color, radius, fontSize } = this.props;
-    return (
-        <button
-            className={`react-pc-ui-button react-pc-ui-button-type-${type} ${disabled ? 'react-pc-ui-button-disabled' : ''}`}
-            style={
-              {
-                backgroundColor: bgColor,
-                color: color,
-                borderRadius: `${radius}px`,
-                fontSize: `${fontSize}px`
-              }
-            }
-            onClick={this.clickFunction}
-        >{this.props.children}</button>
-    );
-  }
-}
-
-Index.propTypes = {
-  bgColor: PropTypes.string,
-  color : PropTypes.string,
-  type : PropTypes.string,
-  onClick: PropTypes.func,
-  // loading: PropTypes.bool,
-  // loadingColor: PropTypes.string,
-  // loadingSize: PropTypes.number,
-  disabled: PropTypes.bool,
-  radius: PropTypes.number,
-  fontSize: PropTypes.number
+  return confirm(config);
 };
 
-// function mapStateToProps(state) {
-//   const { borrowMoney } = state;
-//   return { borrowMoney };
+// Modal.info = function (props) {
+//   const config = {
+//     type: 'info',
+//     iconType: 'info-circle',
+//     okCancel: false,
+//     ...props,
+//   };
+//   return confirm(config);
+// };
+
+// Modal.success = function (props) {
+//   const config = {
+//     type: 'success',
+//     iconType: 'check-circle',
+//     okCancel: false,
+//     ...props,
+//   };
+//   return confirm(config);
+// };
+
+// Modal.error = function (props) {
+//   const config = {
+//     type: 'error',
+//     iconType: 'cross-circle',
+//     okCancel: false,
+//     ...props,
+//   };
+//   return confirm(config);
 // }
 
-export default connect()(Index);
-
+export default Modal;
