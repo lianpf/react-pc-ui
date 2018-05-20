@@ -13,7 +13,8 @@ class Index extends Component {
     loadingSize: 14,
     disabled: false,
     radius: 20,
-    fontSize: 16
+    fontSize: 16,
+    border: 'none'
   };
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ class Index extends Component {
   }
 
   render() {
-    const { type, disabled, bgColor, color, radius, fontSize } = this.props;
+    const { type, disabled, bgColor, color, radius, fontSize, border } = this.props;
     return (
         <button
             className={`react-pc-ui-button react-pc-ui-button-type-${type} ${disabled ? 'react-pc-ui-button-disabled' : ''}`}
@@ -36,7 +37,8 @@ class Index extends Component {
                 backgroundColor: bgColor,
                 color: color,
                 borderRadius: `${radius}px`,
-                fontSize: `${fontSize}px`
+                fontSize: `${fontSize}px`,
+                border,
               }
             }
             onClick={this.clickFunction}
@@ -63,5 +65,6 @@ Index.propTypes = {
 //   return { borrowMoney };
 // }
 
-export default connect()(Index);
+// export default connect()(Index);
+export default Index;
 
