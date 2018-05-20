@@ -9,6 +9,7 @@ module.exports = merge(webpackBaseConfig, {
     button: './src/component/button/index.js',
     table: './src/component/table/index.js',
     message: './src/component/message/index.js',
+    modal: './src/component/modal/index.js',
   },
   /**
    * 多个入口起点

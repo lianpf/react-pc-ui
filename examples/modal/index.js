@@ -3,10 +3,8 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-
 import Button from '../../lib/button';
-
-import Modal from '../../src/component/modal';
+import Modal from '../../lib/modal'
 
 const options = {
   title: 'Modal',
