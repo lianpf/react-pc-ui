@@ -38,3 +38,33 @@ export function isEmpty (obj) {
 
   return false
 }
+
+/***
+ * toggle class
+ * @param node DOM节点
+ * @param className  string or Array of string
+ * @param setting true/false
+ */
+export function toggleClass(node, className, setting) {
+  let classNames = unique( (node.getAttribute('class') || '').split(' ').filter(item => item))
+  let newClassNames
+  let add = typeof setting !== 'undefined' && setting
+  newClassNames = add
+      ? classNames.concat(className)
+      : classNames.filter(item =>
+          typeof className === 'string'
+              ? item !== className
+              : className.indexOf(item) === -1
+      )
+
+  node.setAttribute('class', unique(newClassNames).join(' '))
+}
+
+/***
+ * 数组去重
+ * @param array
+ * @returns {any[]}
+ */
+export function unique(array) {
+  return Array.from(new Set(array))
+}
