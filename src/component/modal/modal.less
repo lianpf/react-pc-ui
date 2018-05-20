@@ -1,37 +1,7 @@
 @import '../../utils/common';
 
-.@{button} {
-  display: inline-block;
-  height: 32px;
-  line-height: 1.5;
-  min-width: 80px;
-  background: @color-red;
-  color: @color-white;
-  font-weight: normal;
-  font-size: @fontSizeNormal;
-  box-sizing: border-box;
-  text-align: center;
-  border: 0;
-  outline: 0;
-  border-radius: @button-radius;
-  cursor: pointer;
-}
-
-@colorWhite: #fff;
-@colorPink: #fff1e8;
-@colorPink2: #fee0cb;
-@colorRed: #ff3411;
-@colorBlack: #212121;
-
-@fontSize: 14px;
-@fontSize16: 16px;
-@fontSize18: 16px;
-
-@borderRadiusSize: 5px;
-
-@colorGray: #f8f8f8;
-
 .@{modal} {
+  font-size: @fontSizeNormal;
   &-overlay{
     position: fixed;
     left: 0;
@@ -48,7 +18,7 @@
     //padding-bottom: 30px;
     min-width: 400px;
     min-height: 200px;
-    background: @colorWhite;
+    background: @color-white;
     border-radius: 5px;
     z-index: 9999;
     transform: translate(-50%, 0);
@@ -59,13 +29,13 @@
   &-title {
     //background-color: @colorPink;
     border-bottom: @border;
-    font-size: @fontSize16;
+    font-size: @fontSizeLarge;
     //height: 60px;
     line-height: 22px;
-    color: @colorBlack;
+    color: @color-black;
     //text-align: center;
-    border-top-left-radius: @borderRadiusSize;
-    border-top-right-radius: @borderRadiusSize;
+    border-top-left-radius: @modal-radius;
+    border-top-right-radius: @modal-radius;
     padding: 16px 24px;
     box-sizing: border-box;
     font-weight: 500;
@@ -98,30 +68,82 @@
     button:nth-child(2) {
       margin-left: 8px;
     }
+  }
+  &-confirm-footer{
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
 
+    button:nth-child(2) {
+      margin-left: 8px;
+    }
+  }
 
-    //.modal-okBtn{
-    //  display: inline-block;
-    //  //float: right;
-    //  width: 302px;
-    //  height: 49px;
-    //  line-height: 49px;
-    //  text-align: center;
-    //  background: @colorRed;
-    //  color: @colorWhite;
-    //  border-radius: 24px;
-    //  box-sizing: border-box;
-    //  margin-left: 10px;
-    //  font-size: @fontSize18;
-    //  cursor: pointer;
-    //  border: none;
-    //  outline: none;
-    //  &:after{
-    //    clear: both;
-    //  }
-    //}
+  // confirm、info、success、error
+  &-confirm{
+    &-wrapper{
+      position: absolute;
+      left: 50%;
+      margin-top: 100px;
+      //padding-bottom: 30px;
+      min-width: 400px;
+      //min-height: 200px;
+      background: @color-white;
+      border-radius: 5px;
+      z-index: 9999;
+      transform: translate(-50%, 0);
+      box-sizing: border-box;
+      overflow: hidden;
+      width: @modal-confirm-width;
+    }
+    &-content{
+      padding: 32px 32px 24px;
+      &-icon-bg{
+        position: relative;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        float: left;
+        img{
+          display: block;
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        &:after{
+          clear: both;
+        }
+      }
+      &-icon-confirm{
+        background: @color-yellow;
+      }
+      &-icon-info{
+        background: @color-blue;
+      }
+
+      &-icon-success{
+        background: @color-green;
+      }
+      &-icon-error{
+        background: @color-red;
+      }
+
+      &-body{
+        margin-left: 38px;
+      }
+      &-title{
+        font-weight: 500;
+        color: @color-black;
+        font-size: @fontSizeLarge;
+      }
+    }
   }
 }
+
 
 :global {
 

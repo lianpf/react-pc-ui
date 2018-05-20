@@ -1,143 +1,147 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
-// import Button from '../../lib/button/index';
-import Button from '../../src/component/button/index';
 import '../template/index.less';
-
 import Template from '../template/index';
-import DemoPanel from '../template/demo-panel';
+
+import Button from '../../lib/button';
+
+import Modal from '../../src/component/modal';
 
 const options = {
-  title: 'Button',
-  desc: '按钮组件',
-  func: 'onClick',
-  params:[{
-    name: 'type',
-    des: '按钮大小',
-    type: 'String',
-    values:[{
-        name: 'default',
-        value: 'default',
+  title: 'Modal',
+  desc: '对话框',
+  func: 'onOk & onCancel',
+  params:[],
+  api: [
+    {
+      name: 'Modal 类型',
+      dataSource: [{
+        param: 'Modal',
+        desc: '默认modal',
+        type: '-',
+        default: '-',
       }, {
-      name: 'large',
-      value: 'large',
-    }, {
-      name: 'small',
-      value: 'small',
-    }],
-    default: 'default'
-  }, {
-    name: 'bgColor',
-    desc: '按钮背景色',
-    type: 'String',
-    values:[
-      {
-        name: '16进制',
-        value: '#1E90FF',
+        param: 'Modal.confirm',
+        desc: '确认modal',
+        type: '-',
+        default: '-',
       }, {
-        name: 'RGB',
-        value: 'rgb(123,104,238)',
+        param: 'Modal.success',
+        desc: '成功 modal',
+        type: '-',
+        default: '-',
       }, {
-        name: '颜色英文名称',
-        value: 'LightCoral',
-      }
-    ],
-    default: '#DA3D42'
-  }, {
-    name: 'color',
-    desc: '按钮文本景色',
-    type: 'String',
-    values:[
-      {
-        name: '16进制',
-        value: '#fff',
+        param: 'Modal.info',
+        desc: '提示 modal',
+        type: '-',
+        default: '-',
       }, {
-        name: 'RGB',
-        value: 'rgb(0,0,0)',
+        param: 'Modal.error',
+        desc: '错误 modal',
+        type: '-',
+        default: '-',
+      }]
+    },
+    {
+      name: 'Modal basic 配置参数',
+      dataSource: [{
+        param: 'title',
+        desc: '标题',
+        type: 'string',
+        default: '-',
       }, {
-        name: '颜色英文名称',
-        value: 'black',
-      }
-    ],
-    default: '#fff'
-  }, {
-    name: 'disabled',
-    desc: '按钮禁用',
-    type: 'Boolean',
-    values:[
-      {
-        name: '是',
-        value: true,
-      },
-      {
-        name: '否',
-        value: false,
-      }
-    ],
-    default: 'false'
-  }, {
-    name: 'radius',
-    desc: '按钮圆角大小',
-    type: 'Number',
-    values:[
-      {
-        name: 'number数字',
-        value: '5',
-      }
-    ],
-    default: '20'
-  }, {
-    name: 'fontSize',
-    desc: '设置按钮字体大小',
-    type: 'Number',
-    values:[
-      {
-        name: 'number数字',
-        value: '18',
-      }
-    ],
-    default: '16'
-  }]
+        param: 'content',
+        desc: '内容',
+        type: 'string | ReactNode',
+        default: '-',
+      }, {
+        param: 'okText',
+        desc: '确认按钮文字',
+        type: 'string',
+        default: '确认',
+      }, {
+        param: 'onOk',
+        desc: '点击确定回调，参数为关闭函数，返回 promise 时 resolve 后自动关闭',
+        type: 'function',
+        default: '-',
+      }]
+    },
+    {
+      name: 'Modal special 配置参数',
+      dataSource: [{
+        param: 'visible',
+        desc: '对话框是否可见(默认modal特有属性)',
+        type: 'boolean',
+        default: '-',
+      }, {
+        param: 'cancelText',
+        desc: '取消按钮文字(默认modal和confirm特有)',
+        type: 'string',
+        default: '取消',
+      }, {
+        param: 'onCancel',
+        desc: '取消回调，参数为关闭函数，返回 promise 时 resolve 后自动关闭(默认modal和confirm特有)',
+        type: 'function',
+        default: '-',
+      }]
+    }
+  ]
 };
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
+    this.state = {
+      visible: false,
+      visibleConfirm: false,
+    };
   }
-
-  onClick() {
-    console.log('--button-onClick--');
+  showModal() {
+    console.log('--modal-show--');
+    this.setState({visible: true})
+  }
+  handleOk() {
+    console.log('--modal-ok--');
+    this.setState({visible: false})
+  }
+  handleCancel() {
+    console.log('--modal-cancel--');
+    this.setState({visible: false})
+  }
+  info() {
+    Modal.confirm({
+      title: 'Do you Want to delete?',
+      content: 'Some descriptions',
+      onOk() {
+        console.log('--确认操作--');
+      },
+      onCancel() {
+        console.log('--取消操作--');
+      }
+    });
   }
 
   render() {
     return (
-        <Template options={options}>
-          <div className={'component-demo-list'}>
-            {
-              options.params.length && options.params.map((item, index) => {
-                return (
-                    <DemoPanel item={item} key={index}>
-                      {
-                        item.values.length && item.values.map((demo, key) => {
-                          let params = {
-                            [item.name]: demo.value
-                          };
-                          return (
-                              <div className={'show-demo-item'} key={`${index}-${key}`}>
-                                <span>{demo.name}: {demo.value}</span>
-                                <Button {...params} onClick={this.onClick}>{options.title}</Button>
-                              </div>
-                          )
-                        })
-                      }
-                    </DemoPanel>
-                );
-              })
-            }
-          </div>
-        </Template>
+        <div>
+          <Template options={options}>
+            <Button onClick={() => this.showModal()}>open modal </Button>
+            <Modal
+                title="Basic Modal"
+                visible={this.state.visible}
+                onOk={() => this.handleOk()}
+                onCancel={() => this.handleCancel()}
+            >
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+            </Modal>
+
+            &nbsp;&nbsp;
+            <Button onClick={() => this.info()}>open confirm </Button>
+          </Template>
+        </div>
     );
   }
 }
