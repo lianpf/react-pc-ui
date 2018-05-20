@@ -1,0 +1,128 @@
+@import '../../utils/common';
+
+.@{button} {
+  display: inline-block;
+  height: 32px;
+  line-height: 1.5;
+  min-width: 80px;
+  background: @color-red;
+  color: @color-white;
+  font-weight: normal;
+  font-size: @fontSizeNormal;
+  box-sizing: border-box;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  border-radius: @button-radius;
+  cursor: pointer;
+}
+
+@colorWhite: #fff;
+@colorPink: #fff1e8;
+@colorPink2: #fee0cb;
+@colorRed: #ff3411;
+@colorBlack: #212121;
+
+@fontSize: 14px;
+@fontSize16: 16px;
+@fontSize18: 16px;
+
+@borderRadiusSize: 5px;
+
+@colorGray: #f8f8f8;
+
+.@{modal} {
+  &-overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+  }
+  &-wrapper{
+    position: absolute;
+    left: 50%;
+    margin-top: 100px;
+    //padding-bottom: 30px;
+    min-width: 400px;
+    min-height: 200px;
+    background: @colorWhite;
+    border-radius: 5px;
+    z-index: 9999;
+    transform: translate(-50%, 0);
+    box-sizing: border-box;
+    overflow: hidden;
+    width: @modal-width;
+  }
+  &-title {
+    //background-color: @colorPink;
+    border-bottom: @border;
+    font-size: @fontSize16;
+    //height: 60px;
+    line-height: 22px;
+    color: @colorBlack;
+    //text-align: center;
+    border-top-left-radius: @borderRadiusSize;
+    border-top-right-radius: @borderRadiusSize;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    font-weight: 500;
+  }
+  &-icon-close{
+    display: block;
+    float: right;
+    width: 24px;
+    height: 24px;
+    //margin-top: 18px;
+    //margin-right: 18px;
+    cursor: pointer;
+    &:after{
+      clear: both;
+    }
+  }
+  &-content{
+    padding: 24px;
+    font-size: @fontSizeNormal;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  &-footer{
+    border-top: @border;
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px;
+
+    button:nth-child(2) {
+      margin-left: 8px;
+    }
+
+
+    //.modal-okBtn{
+    //  display: inline-block;
+    //  //float: right;
+    //  width: 302px;
+    //  height: 49px;
+    //  line-height: 49px;
+    //  text-align: center;
+    //  background: @colorRed;
+    //  color: @colorWhite;
+    //  border-radius: 24px;
+    //  box-sizing: border-box;
+    //  margin-left: 10px;
+    //  font-size: @fontSize18;
+    //  cursor: pointer;
+    //  border: none;
+    //  outline: none;
+    //  &:after{
+    //    clear: both;
+    //  }
+    //}
+  }
+}
+
+:global {
+
+}
