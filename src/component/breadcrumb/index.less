@@ -1,0 +1,28 @@
+@import '../../utils/common';
+
+:global {
+  .@{breadcrumb} {
+    color: rgba(0, 0, 0, .45);
+    font-size: @fontSizeNormal;
+
+    :not(:first-child) {
+      &:before{
+        content: "/";
+        display: inline-block;
+        color: @color-black;
+        padding: 0 6px;
+      }
+    }
+    :last-child{
+      color: rgba(0, 0, 0, .65);
+    }
+    a{
+      color: rgba(0, 0, 0, .45);
+      cursor: pointer;
+    }
+    a:hover{
+      color: @color-blue;
+      text-decoration: none;
+    }
+  }
+}
