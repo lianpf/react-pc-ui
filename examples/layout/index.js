@@ -6,6 +6,7 @@ import Button from '../button/index';
 import Table from '../table/index';
 import Message from '../message/index';
 import Modal from '../modal/index';
+import Breadcrumb from '../breadcrumb/index';
 
 import './index.less';
 import RedArrow from './img/redArrow.png';
@@ -29,10 +30,10 @@ const menuListConfig = [
   },
   {
     isShow: true,
-    text: 'Table 表格',
-    path: '/component/table',
+    text: 'Breadcrumb 面包屑',
+    path: '/component/breadcrumb',
     exact: true,
-    main: () => <Table />
+    main: () => <Breadcrumb />
   },
   {
     isShow: true,
@@ -43,10 +44,17 @@ const menuListConfig = [
   },
   {
     isShow: true,
-    text: 'Message 全局',
+    text: 'Message 全局提示',
     path: '/component/message',
     exact: true,
     main: () => <Message />
+  },
+  {
+    isShow: true,
+    text: 'Table 表格',
+    path: '/component/table',
+    exact: true,
+    main: () => <Table />
   }
 ];
 
