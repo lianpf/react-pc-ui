@@ -3,10 +3,8 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-import Button from '../../lib/button';
-import Modal from '../../lib/modal';
 
-import Breadcrumb from '../../src/component/breadcrumb/index';
+import Breadcrumb from '../../lib/breadcrumb/index';
 
 const options = {
   title: 'Breadcrumb',
@@ -59,8 +57,7 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
+  
   render() {
     return (
         <div>
