@@ -1,0 +1,40 @@
+@import '../../utils/common';
+
+:global {
+  .@{tabs} {
+    width: 100%;
+    font-size: @fontSizeNormal;
+    color: @color-black;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    zoom: 1;
+    list-style: none;
+    &-nav{
+      width: 100%;
+      border-bottom: @border;
+      box-sizing: border-box;
+      padding: 0;
+      li {
+        display: inline-block;
+        text-align: left;
+        height: 100%;
+        margin: 0 32px 0 0;
+        padding: 12px 16px;
+        box-sizing: border-box;
+        cursor: pointer;
+        &:hover{
+          color: @color-red;
+        }
+      }
+      &-item-active{
+        color: @color-red;
+        font-weight: 500;
+        border-bottom: 2px solid @color-red;
+      }
+    }
+    &-pane{
+      width: 100%;
+    }
+  }
+}
