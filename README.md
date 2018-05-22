@@ -22,7 +22,15 @@ pagination, 以每周两个的开发进度更新, 谢谢大家支持
 10. Pagination
 
 ### npm包
+### Example
 
+http://localhost:8000
+
+### install
+
+[![rc-pc-ui](https://nodei.co/npm/rc-pc-ui.png)](https://www.npmjs.com/package/react-pc-ui)
+
+***
 **loader**  <br />
 
 包 | 作用
