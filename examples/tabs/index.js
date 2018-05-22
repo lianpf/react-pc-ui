@@ -55,16 +55,15 @@ class Index extends React.Component {
     super(props);
   }
   tabsChange(key) {
-    console.log(key);
+    console.log('--tabs-change--', key);
   }
-
 
   render() {
     return (
         <div>
           <Template options={options}>
             <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '8px', borderRadius: '5px'}}>
-              <Tabs defaultActiveKey="11" onChange={(key) => this.tabsChange(key)}>
+              <Tabs defaultActiveKey="12" onChange={(key) => this.tabsChange(key)}>
                 <TabPane tab="Tab 1" key="11">Content of Tab Pane 1</TabPane>
                 <TabPane tab="Tab 2" key="12">Content of Tab Pane 2</TabPane>
                 <TabPane tab="Tab 3" key="13">Content of Tab Pane 3</TabPane>
