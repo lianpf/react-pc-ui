@@ -7,6 +7,7 @@ import Table from '../table/index';
 import Message from '../message/index';
 import Modal from '../modal/index';
 import Breadcrumb from '../breadcrumb/index';
+import Tabs from '../tabs/index';
 
 import './index.less';
 import RedArrow from './img/redArrow.png';
@@ -55,6 +56,13 @@ const menuListConfig = [
     path: '/component/table',
     exact: true,
     main: () => <Table />
+  },
+  {
+    isShow: true,
+    text: 'Tabs 标签页',
+    path: '/component/tabs',
+    exact: true,
+    main: () => <Tabs />
   }
 ];
 
