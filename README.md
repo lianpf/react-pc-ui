@@ -28,7 +28,7 @@ http://localhost:8000
 
 ### install
 
-[![rc-pc-ui](https://nodei.co/npm/rc-pc-ui.png)](https://www.npmjs.com/package/react-pc-ui)
+[![rc-pc-ui](https://nodei.co/npm/react-pc-ui.png)](https://www.npmjs.com/package/react-pc-ui)
 
 ***
 **loader**  <br />
