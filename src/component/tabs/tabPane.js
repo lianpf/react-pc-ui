@@ -1,9 +1,6 @@
-import React, {PropTypes} from 'react';
-import ReactDOM from 'react-dom';
-import names from 'classnames';
+import React from 'react';
 
 const prefixCls = 'react-pc-ui-tabs';
-
 
 const TabPane = (props) => {
   return (

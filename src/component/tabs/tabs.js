@@ -11,32 +11,30 @@ const prefixCls = 'react-pc-ui-tabs';
 function getDefaultActiveKey(props) {
   let activeKey;
   React.Children.forEach(props.children, (child) => {
-    if (child && !activeKey && !child.props.disabled) {
+    if (child && !activeKey) {
       activeKey = child.key;
     }
   });
   return activeKey;
 }
 
+function activeKeyIsValid(props, key) {
+  const keys = React.Children.map(props.children, child => child && child.key);
+  return keys.indexOf(key) >= 0;
+}
+
+
 export default class Tabs extends React.Component{
   // static defaultProps = {
-  //   title: '',
-  //   visible: false,
-  //   okText: '确定',
-  //   onOk: () => {},
-  //   onClose: () => {},
-  //   className: '',
-  //   okBtnClassName: '',
+  //   activeKey: void 0,
+  //   defaultActiveKey: void 0,
+  //   onChange: () => {}
   // };
-
+  //
   // static propTypes = {
-  //   title: PropTypes.string,
-  //   visible: PropTypes.bool,
-  //   okText: PropTypes.string,
-  //   onOk: PropTypes.func,
-  //   onClose: PropTypes.func,
-  //   className: PropTypes.string,
-  //   okBtnClassName: PropTypes.string,
+  //   activeKey: PropTypes.string,
+  //   defaultActiveKey: PropTypes.string,
+  //   onChange: PropTypes.func
   // };
   constructor(props) {
     super(props);
@@ -63,14 +61,17 @@ export default class Tabs extends React.Component{
         activeKey: nextProps.activeKey,
       });
     } else if (!activeKeyIsValid(nextProps, this.state.activeKey)) {
-      // https://github.com/ant-design/ant-design/issues/7093
       this.setState({
         activeKey: getDefaultActiveKey(nextProps),
       });
     }
   }
   setActiveKey(activeKey) {
-    this.setState({activeKey});
+    this.setState({
+      activeKey
+    }, () => {
+      this.props.onChange(this.state.activeKey);
+    });
   }
 
   getTabsNav(props) {
@@ -96,10 +97,8 @@ export default class Tabs extends React.Component{
   renderTabPane(props) {
     const { activeKey } = this.state;
     let childNode = null;
-    console.log('--activeKey--', activeKey);
     if (props.children) {
       props.children.map((item) => {
-        console.log('--activeKey=item.key--', item.key === activeKey);
         if (item.key === activeKey) {
           childNode = <TabPane {...item} />;
         }
@@ -108,12 +107,8 @@ export default class Tabs extends React.Component{
     return childNode;
   }
 
-
   render(){
-    console.log('--this.props--', this.props);
     const props = this.props;
-    const { activeKey } = this.state;
-
     return (
         <div className={`${prefixCls}`}>
           {this.getTabsNav(props)}
