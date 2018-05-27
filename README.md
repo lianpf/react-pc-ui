@@ -21,6 +21,9 @@ pagination, 以每周两个的开发进度更新, 谢谢大家支持
 9. Countdown
 10. Pagination
 
+#### now v1.0.3
+Button、Modal、Table、Message、Breadcrumb、Tabs
+
 ### npm包
 ### Example
 
