@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import '../template/index.less';
 import Template from '../template/index';
 
-import Tabs from '../../src/component/tabs/index';
+import Tabs from '../../lib/tabs/index';
 
 const TabPane = Tabs.TabPane;
 
