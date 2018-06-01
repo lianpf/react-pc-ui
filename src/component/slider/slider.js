@@ -113,7 +113,11 @@ export default class Index extends React.Component{
         <div className={`${prefixCls}`}>
           <div className={`${prefixCls}-h`}>
             <div className={`${prefixCls}-h-line`}></div>
-            <div className={`${prefixCls}-h-mark`}></div>
+            <div
+                className={`${prefixCls}-h-mark`}
+                onMouseEnter={() => this.handleTooltipVisibleChange()}
+                onMouseLeave={() => this.handleTooltipVisibleChange()}
+            ></div>
           </div>
         </div>
     );
