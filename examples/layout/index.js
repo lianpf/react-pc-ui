@@ -8,6 +8,8 @@ import Message from '../message/index';
 import Modal from '../modal/index';
 import Breadcrumb from '../breadcrumb/index';
 import Tabs from '../tabs/index';
+import Slider from '../slider/index';
+import Steps from '../steps/index';
 
 import './index.less';
 import RedArrow from './img/redArrow.png';
@@ -49,6 +51,20 @@ const menuListConfig = [
     path: '/component/message',
     exact: true,
     main: () => <Message />
+  },
+  {
+    isShow: true,
+    text: 'Slider 滑动输入条',
+    path: '/component/slider',
+    exact: true,
+    main: () => <Slider />
+  },
+  {
+    isShow: true,
+    text: 'Steps 步骤条',
+    path: '/component/steps',
+    exact: true,
+    main: () => <Steps />
   },
   {
     isShow: true,
