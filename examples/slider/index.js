@@ -65,19 +65,29 @@ const options = {
 class Index extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: 35
+    }
   }
 
   tabsChange(key) {
     console.log('--tabs-change--', key);
+  }
+  sliderChange(value) {
+    console.log('--example--', value);
+    this.setState({value})
   }
 
   render() {
     return (
         <div>
           <Template options={options}>
-            <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '8px', borderRadius: '5px'}}>
-              <Slider />
+            <div
+                style={{border: "1px solid rgba(0, 0, 0, .1)",
+                  padding: '8px', borderRadius: '5px', width: '500px', display: 'inline-block'}}>
+              <Slider onChange={(value) => this.sliderChange(value)}/>
             </div>
+            <div style={{display: 'inline-block', verticalAlign: 'top', marginLeft: "10px"}}>value: {this.state.value}</div>
           </Template>
         </div>
     );
