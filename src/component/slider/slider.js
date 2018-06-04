@@ -11,10 +11,14 @@ const prefixCls = 'react-pc-ui-slider';
 
 export default class Index extends React.Component{
   static defaultProps = {
-    onChange: () => {},
-    step: 1,
-    min: 0,
+    vertical: false,
+    disabled: false,
     max: 100,
+    min: 0,
+    step: 1,
+    value: void 0,
+    defaultValue: 50,
+    onChange: () => {},
   };
   //
   // static propTypes = {
