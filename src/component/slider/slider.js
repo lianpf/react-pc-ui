@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import names from 'classnames'
 import './index.less';
 
@@ -8,28 +9,13 @@ import './index.less';
 const prefixCls = 'react-pc-ui-slider';
 
 
-function getDefaultActiveKey(props) {
-  let activeKey;
-  React.Children.forEach(props.children, (child) => {
-    if (child && !activeKey) {
-      activeKey = child.key;
-    }
-  });
-  return activeKey;
-}
-
-function activeKeyIsValid(props, key) {
-  const keys = React.Children.map(props.children, child => child && child.key);
-  return keys.indexOf(key) >= 0;
-}
-
-
 export default class Index extends React.Component{
-  // static defaultProps = {
-  //   activeKey: void 0,
-  //   defaultActiveKey: void 0,
-  //   onChange: () => {}
-  // };
+  static defaultProps = {
+    onChange: () => {},
+    step: 1,
+    min: 0,
+    max: 100,
+  };
   //
   // static propTypes = {
   //   activeKey: PropTypes.string,
@@ -38,85 +24,67 @@ export default class Index extends React.Component{
   // };
   constructor(props) {
     super(props);
-    let activeKey;
-    if ('activeKey' in props) {
-      activeKey = props.activeKey;
-    } else if ('defaultActiveKey' in props) {
-      activeKey = props.defaultActiveKey;
-    } else {
-      activeKey = getDefaultActiveKey(props);
-    }
 
     this.state = {
-      activeKey,
+      parentBasicX: 0,
+      parentWidthCount: 0,
+      previewState: 0,
+      currentState: 0,
+      previewValue: props.min,
+      currentValue: props.min,
     };
-
-    this.getTabsNav = this.getTabsNav.bind(this);
-    this.renderTabPane = this.renderTabPane.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('activeKey' in nextProps) {
-      this.setState({
-        activeKey: nextProps.activeKey,
-      });
-    } else if (!activeKeyIsValid(nextProps, this.state.activeKey)) {
-      this.setState({
-        activeKey: getDefaultActiveKey(nextProps),
-      });
-    }
-  }
-  setActiveKey(activeKey) {
+  componentDidMount() {
+    let event = this.refs['sliderH'];
+    let t = 0;
+    let l = 0;
+    let parentWidthCount = event.offsetWidth;
+
+    while (event = event.offsetParent) {
+      t += event.offsetTop;
+      l += event.offsetLeft;
+    };
     this.setState({
-      activeKey
-    }, () => {
-      this.props.onChange(this.state.activeKey);
+      parentBasicX: l,
+      parentWidthCount,
     });
   }
 
-  getTabsNav(props) {
-    const { activeKey } = this.state;
-    if (props.children) {
-      return (
-          <ul className={`${prefixCls}-nav`}>
-            {
-              props.children.map((item) => {
-                let className = names([
-                  {'react-pc-ui-tabs-nav-item-active': activeKey === item.key}
-                ]);
-                return (
-                    <li key={item.key} onClick={() => this.setActiveKey(item.key)} className={className}>{item.props.tab}</li>
-                );
-              })
-            }
-          </ul>
-      );
-    }
-  }
+  handleTooltipVisibleChange(e) {
+    let sliderH = this.refs['sliderH'];
+    let children = sliderH.getElementsByTagName('div');
+    let clickX = e.pageX;
+    let {parentBasicX, parentWidthCount, previewValue} = this.state;
+    let {max, min, step} = this.props;
 
-  renderTabPane(props) {
-    const { activeKey } = this.state;
-    let childNode = null;
-    if (props.children) {
-      props.children.map((item) => {
-        if (item.key === activeKey) {
-          childNode = <TabPane {...item} />;
-        }
-      });
-    }
-    return childNode;
+    let roundTimes = Math.round((clickX - parentBasicX) * (max - min ) / (step * parentWidthCount));
+    let currentValue = Number(min) + Number(roundTimes * step);
+    let percentWidth =  roundTimes * step / (max -min) * 100;
+    children[0].style.width = `${percentWidth}%`;
+    children[1].style.left = `${percentWidth}%`;
+    console.log("currentValue--", currentValue);
+    this.setState({
+      currentValue,
+    }, () => {
+      this.props.onChange(this.state.currentValue);
+    })
   }
 
   render(){
     const props = this.props;
     return (
         <div className={`${prefixCls}`}>
-          <div className={`${prefixCls}-h`}>
-            <div className={`${prefixCls}-h-line`}></div>
+          <div className={`${prefixCls}-h`}
+               ref="sliderH"
+               onMouseDown={(event) => this.handleTooltipVisibleChange(event)}
+               onMouseUp={(event) => this.handleTooltipVisibleChange(event)}
+          >
+            <div
+                className={`${prefixCls}-h-line`}
+            ></div>
             <div
                 className={`${prefixCls}-h-mark`}
-                onMouseEnter={() => this.handleTooltipVisibleChange()}
-                onMouseLeave={() => this.handleTooltipVisibleChange()}
             ></div>
           </div>
         </div>
