@@ -12,7 +12,7 @@ const prefixCls = 'react-pc-ui-slider';
 export default class Index extends React.Component{
   static defaultProps = {
     vertical: false,
-    disabled: false,
+    disabled: true,
     max: 100,
     min: 0,
     step: 1,
@@ -56,6 +56,10 @@ export default class Index extends React.Component{
   }
 
   handleTooltipVisibleChange(e) {
+    const { disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     let sliderH = this.refs['sliderH'];
     let children = sliderH.getElementsByTagName('div');
     let clickX = e.pageX;
@@ -76,7 +80,7 @@ export default class Index extends React.Component{
   }
 
   render(){
-    const props = this.props;
+    const { disabled } = this.props;
     return (
         <div className={`${prefixCls}`}>
           <div className={`${prefixCls}-h`}
@@ -87,9 +91,12 @@ export default class Index extends React.Component{
             <div
                 className={`${prefixCls}-h-line`}
             ></div>
-            <div
-                className={`${prefixCls}-h-mark`}
-            ></div>
+            {
+              !disabled ? (<div
+                  className={`${prefixCls}-h-mark`}
+              ></div>) : ''
+            }
+
           </div>
         </div>
     );
