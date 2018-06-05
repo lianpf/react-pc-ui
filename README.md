@@ -4,7 +4,7 @@ Button, Modal, Table, Message, Breadcrumb, Tabs, Slider, Step, Countdown,
 Pagination, updated with two development schedules per week, thank you for your support
 
 时间仓促, 这个组件库一直在整理开发过程中, 第一个完整版本 1.1.0 共 10个组件, 包括
-button、modal、table、message、breadcrumb、tabs、slider、step、countdown、
+button、modal、table、message、breadcrumb、tabs、slider、steps、countdown、
 pagination, 以每周两个的开发进度更新, 谢谢大家支持
 
 
@@ -17,12 +17,12 @@ pagination, 以每周两个的开发进度更新, 谢谢大家支持
 5. Breadcrumb
 6. Tabs
 7. Slider
-8. Step
+8. Steps
 9. Countdown
 10. Pagination
 
-#### now v1.0.3
-Button、Modal、Table、Message、Breadcrumb、Tabs
+#### now v1.0.4
+Button、Modal、Table、Message、Breadcrumb、Tabs、Slider、Step
 
 ### npm包
 ### Example
