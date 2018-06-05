@@ -10,6 +10,8 @@ import Breadcrumb from '../breadcrumb/index';
 import Tabs from '../tabs/index';
 import Slider from '../slider/index';
 import Steps from '../steps/index';
+import Countdown from '../countdown/index';
+import Pagination from '../pagination/index';
 
 import './index.less';
 import RedArrow from './img/redArrow.png';
@@ -40,6 +42,13 @@ const menuListConfig = [
   },
   {
     isShow: true,
+    text: 'Countdown 倒计时',
+    path: '/component/countdown',
+    exact: true,
+    main: () => <Countdown />
+  },
+  {
+    isShow: true,
     text: 'Modal 对话框',
     path: '/component/modal',
     exact: true,
@@ -51,6 +60,13 @@ const menuListConfig = [
     path: '/component/message',
     exact: true,
     main: () => <Message />
+  },
+  {
+    isShow: true,
+    text: 'Pagination 分页',
+    path: '/component/pagination',
+    exact: true,
+    main: () => <Pagination />
   },
   {
     isShow: true,
