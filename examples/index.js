@@ -6,7 +6,6 @@ import { createStore } from 'redux';
 import Routes from './router';
 // import configure from './store/configureStore'
 
-console.log('--index-000--');
 function counter(state = 0, action) {
   switch (action.type) {
     case 'INCREMENT':
