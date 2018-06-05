@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-
-import Steps from '../../src/component/steps';
+import Steps from '../../lib/steps/index';
 
 const stepsParams = {
   current: 1,
@@ -23,7 +22,7 @@ const stepsParams = {
       // date: 3
     }
   ]
-}
+};
 
 const options = {
   title: 'Steps',

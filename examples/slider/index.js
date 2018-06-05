@@ -3,11 +3,7 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-
-import Slider from '../../src/component/slider/index';
-// import Tabs from '../../lib/tabs/index';
-//
-// const TabPane = Tabs.TabPane;
+import Slider from '../../lib/slider';
 
 const options = {
   title: 'Slider',
@@ -77,7 +73,8 @@ class Index extends React.Component {
   }
   changeField(e) {
     console.log('--手动修改--', e.target.value);
-    this.setState({value: Number(e.target.value)})
+    let value = Number(e.target.value);
+    this.setState({value,})
   }
 
   render() {

@@ -82,10 +82,11 @@ export default class Index extends React.Component{
     if (!_bool) {
       return;
     }
+
     this.setState({
       value: value
     }, () => {
-      this.countPosition();
+      this.countPosition(value);
     });
   }
 

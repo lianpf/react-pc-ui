@@ -11,7 +11,9 @@ module.exports = merge(webpackBaseConfig, {
     message: './src/component/message/index.js',
     modal: './src/component/modal/index.js',
     breadcrumb: './src/component/breadcrumb/index',
-    tabs: './src/component/tabs/index'
+    tabs: './src/component/tabs/index',
+    slider: './src/component/slider/index',
+    steps: './src/component/steps/index'
   },
   /**
    * 多个入口起点
