@@ -4,46 +4,58 @@ import {connect} from 'react-redux';
 import '../template/index.less';
 import Template from '../template/index';
 
-import Tabs from '../../lib/tabs/index';
+import Steps from '../../src/component/steps';
 
-const TabPane = Tabs.TabPane;
+const stepsParams = {
+  current: 1,
+  isFail: false,
+  items: [
+    {
+      text: '第一步',
+      // date: 1
+    },
+    {
+      text: '第二步',
+      // date: 2
+    },
+    {
+      text: '第三步',
+      // date: 3
+    }
+  ]
+}
 
 const options = {
-  title: 'Tabs',
-  desc: '选项卡切换组件',
+  title: 'Steps',
+  desc: '步骤条 引导用户按照流程完成任务的导航条',
   func: '-',
-  params:[],
+  params: [],
   api: [
     {
-      name: 'Tabs 配置参数',
+      name: 'Steps 配置参数',
       dataSource: [{
-        param: 'activeKey',
-        desc: '当前激活 tab 面板的 key',
-        type: 'string',
-        default: '-',
+        param: 'current',
+        desc: '指定当前步骤，从0开始记数',
+        type: 'number',
+        default: '0',
       }, {
-        param: 'defaultActiveKey',
-        desc: '初始化选中面板的 key，如果没有设置 activeKey',
-        type: 'string',
-        default: '第一个面板',
+        param: 'isFail',
+        desc: '最后一个步骤的状态',
+        type: 'bool',
+        default: 'false',
       }, {
-        param: 'onChange',
-        desc: '切换面板的回调',
-        type: 'function(activeKey) {}',
+        param: 'items',
+        desc: '步骤条每一个item params组成的json array',
+        type: 'json Array',
         default: '-',
       }]
     },
     {
-      name: 'Tabs.TabPane 配置参数',
+      name: 'items item 配置参数',
       dataSource: [{
-        param: 'key',
-        desc: '对应 activeKey',
+        param: 'text',
+        desc: '描述',
         type: 'string',
-        default: '-',
-      }, {
-        param: 'tab',
-        desc: '选项卡头显示文字',
-        type: 'string|ReactNode',
         default: '-',
       }]
     }
@@ -54,20 +66,13 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
   }
-  tabsChange(key) {
-    console.log('--tabs-change--', key);
-  }
 
   render() {
     return (
         <div>
           <Template options={options}>
-            <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '8px', borderRadius: '5px'}}>
-              <Tabs defaultActiveKey="12" onChange={(key) => this.tabsChange(key)}>
-                <TabPane tab="Tab 1" key="11">Content of Tab Pane 1</TabPane>
-                <TabPane tab="Tab 2" key="12">Content of Tab Pane 2</TabPane>
-                <TabPane tab="Tab 3" key="13">Content of Tab Pane 3</TabPane>
-              </Tabs>
+            <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '22px 8px 12px', borderRadius: '5px'}}>
+              <Steps params={stepsParams} />
             </div>
           </Template>
         </div>

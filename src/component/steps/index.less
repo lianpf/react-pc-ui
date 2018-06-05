@@ -1,40 +1,89 @@
 @import '../../utils/common';
 
-:global {
-  .@{tabs} {
-    width: 100%;
-    font-size: @fontSizeNormal;
-    color: @color-black;
-    margin: 0;
-    border: 0;
+
+@fontSize12: 12px;
+@fontSize14: 14px;
+@fontSize16: 16px;
+@fontSize18: 18px;
+@fontSize48: 48px;
+
+@colorWhite: #fff;
+@colorGray: #f3f3f3;
+@colorGray2: #868686;
+@colorGray3: #eaeaea;
+@colorGray4: #cacaca;
+@colorGray5: #BFBFBF;
+@colorRed: #ff3411;
+@colorPink: #fffbfa;
+
+
+@colorBlue: #4A86FF;
+@color: #ffa99a;
+@gutter: 44px;
+@height: 3px;
+@content-height: 30px;
+@content-width: 80px;
+
+.steps {
+  font-size: 14px;
+  box-sizing: border-box;
+  .step{
     box-sizing: border-box;
-    zoom: 1;
-    list-style: none;
-    &-nav{
-      width: 100%;
-      border-bottom: @border;
+    .stepItem{
       box-sizing: border-box;
-      padding: 0;
-      li {
-        display: inline-block;
-        text-align: left;
-        height: 100%;
-        margin: 0 32px 0 0;
-        padding: 12px 16px;
+      .content{
+        width: 36px;
+        height: 36px;
+        background: @colorBlue;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 36px;
+        font-size: @fontSize18;
+        color: @colorWhite;
         box-sizing: border-box;
-        cursor: pointer;
-        &:hover{
-          color: @color-red;
-        }
+        margin-left: 15px;
+        margin-bottom: 10px;
       }
-      &-item-active{
-        color: @color-red;
-        font-weight: 500;
-        border-bottom: 2px solid @color-red;
+      .contentNoActive{
+        background: @colorGray;
+        color: @colorGray5;
+      }
+      .errorContent{
+        background: @colorRed;
+      }
+      .stepText{
+        width: 66px;
+        text-align: center;
+        font-size: @fontSize16;
+        color: @colorBlue;
+      }
+      .errorStepText{
+        color: @colorRed;
+      }
+      .stepTextNoActive{
+        color: @colorGray2;
       }
     }
-    &-pane{
-      width: 100%;
+
+    .stepLine{
+      height: 36px;
+      line-height: 36px;
+      width: 200px;
+      box-sizing: border-box;
+      .lineBorder{
+        display: inline-block;
+        height: 3px;
+        width: 100%;
+        background: @colorBlue;
+      }
+      .lineBorderNoActive{
+        background: @colorGray;
+      }
     }
   }
+}
+
+.flexParent{
+  display: flex;
+  flex-direction: row;
 }
