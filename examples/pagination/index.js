@@ -31,31 +31,62 @@ const options = {
   params: [],
   api: [
     {
-      name: 'Steps 配置参数',
+      name: 'Pagination 配置参数',
       dataSource: [{
         param: 'current',
-        desc: '指定当前步骤，从0开始记数',
+        desc: '当前页数',
+        type: 'number',
+        default: '-',
+      }, {
+        param: 'defaultCurrent',
+        desc: '默认的当前页数',
+        type: 'number',
+        default: '1',
+      }, {
+        param: 'pageSize',
+        desc: '每页条数',
+        type: 'number',
+        default: '-',
+      }, {
+        param: 'defaultPageSize',
+        desc: '默认的每页条数',
+        type: 'number',
+        default: '10',
+      }, {
+        param: 'total',
+        desc: '数据总数',
         type: 'number',
         default: '0',
       }, {
-        param: 'isFail',
-        desc: '最后一个步骤的状态',
-        type: 'bool',
+        param: 'size',
+        desc: '当为「small」时，是小尺寸分页',
+        type: '',
+        default: '""',
+      }, {
+        param: 'showQuickJumper',
+        desc: '是否可以快速跳转至某页',
+        type: 'boolean',
         default: 'false',
       }, {
-        param: 'items',
-        desc: '步骤条每一个item params组成的json array',
-        type: 'json Array',
-        default: '-',
-      }]
-    },
-    {
-      name: 'items item 配置参数',
-      dataSource: [{
-        param: 'text',
-        desc: '描述',
-        type: 'string',
-        default: '-',
+        param: 'hideOnSinglePage',
+        desc: '只有一页时是否隐藏分页器',
+        type: 'boolean',
+        default: 'false',
+      }, {
+        param: 'showSizeChanger',
+        desc: '是否可以改变 pageSize',
+        type: 'boolean',
+        default: 'false',
+      }, {
+        param: 'onShowSizeChange',
+        desc: 'pageSize 变化的回调',
+        type: 'Function(current, size)',
+        default: 'noop',
+      }, {
+        param: 'onChange',
+        desc: '页码改变的回调，参数是改变后的页码及每页条数',
+        type: 'Function(page, pageSize)',
+        default: 'noop',
       }]
     }
   ]
@@ -71,7 +102,7 @@ class Index extends React.Component {
         <div>
           <Template options={options}>
             <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '22px 8px 12px', borderRadius: '5px'}}>
-              <Steps params={stepsParams} />
+              <Steps params={stepsParams}/>
             </div>
           </Template>
         </div>
