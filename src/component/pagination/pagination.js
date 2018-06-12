@@ -62,9 +62,11 @@ export default class Pagination extends React.Component{
     this.state = {
       current,
       pageSize,
+      goInputText: '',
     };
 
     this.changePage = this.changePage.bind(this);
+    this.go = this.go.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,7 +82,6 @@ export default class Pagination extends React.Component{
     }
   }
   changePage(page) {
-    console.log("--changePage-page--", page);
     this.setState({
       current: page,
     }, () => {
@@ -88,7 +89,6 @@ export default class Pagination extends React.Component{
     })
   }
   prevPage = () => {
-    console.log("--prevPage-page--");
     if (this.hasPrev()) {
       this.changePage(this.state.current - 1);
     }
@@ -106,6 +106,24 @@ export default class Pagination extends React.Component{
 
   hasNext = () => {
     return this.state.current < this.calculatePage();
+  };
+  inputPage(value) {
+    this.setState({
+      goInputText: value,
+    })
+  }
+  go = (e) => {
+    let value = this.state.goInputText;
+    if (value === '') {
+      return;
+    }
+    value = isNaN(value) ? this.state.current : Number(value);
+    if (e.keyCode === 13 || e.type === 'click') {
+      this.setState({
+        goInputText: '',
+      });
+      this.changePage(value);
+    }
   };
 
 
@@ -144,7 +162,12 @@ export default class Pagination extends React.Component{
             {/*<option value ="40">40条/页</option>*/}
           {/*</select>*/}
           <div className={`${prefixCls}-quicklyPage`}>
-            跳至 <input type="text"/> 页
+            跳至 <input
+              type="text"
+              value={this.state.goInputText}
+              onChange={(e) => this.inputPage(e.target.value)}
+              onKeyUp={this.go}
+          /> 页
           </div>
           <div className={`${prefixCls}-pageTotal`}>
             总共{total}条, 共{Math.ceil(total / pageSize)}页
