@@ -3,26 +3,7 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-import Steps from '../../lib/steps/index';
-
-const stepsParams = {
-  current: 1,
-  isFail: false,
-  items: [
-    {
-      text: '第一步',
-      // date: 1
-    },
-    {
-      text: '第二步',
-      // date: 2
-    },
-    {
-      text: '第三步',
-      // date: 3
-    }
-  ]
-};
+import Pagination from '../../src/component/pagination';
 
 const options = {
   title: 'Pagination',
@@ -98,11 +79,12 @@ class Index extends React.Component {
   }
 
   render() {
+    // const params = {};
     return (
         <div>
           <Template options={options}>
             <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '22px 8px 12px', borderRadius: '5px'}}>
-              <Steps params={stepsParams}/>
+              <Pagination />
             </div>
           </Template>
         </div>
