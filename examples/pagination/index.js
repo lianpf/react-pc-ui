@@ -54,12 +54,12 @@ const options = {
         type: 'boolean',
         default: 'false',
       }, {
-        param: 'showSizeChanger',
+        param: 'showSizeChanger(此field暂不可用)',
         desc: '是否可以改变 pageSize',
         type: 'boolean',
         default: 'false',
       }, {
-        param: 'onShowSizeChange',
+        param: 'onShowSizeChange(此field暂不可用)',
         desc: 'pageSize 变化的回调',
         type: 'Function(current, size)',
         default: 'noop',
