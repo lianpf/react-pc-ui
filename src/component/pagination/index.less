@@ -1,6 +1,10 @@
 @import '../../utils/common';
 
 
+/**
+  * pagination left & right icon color : #777777
+  */
+
 .inlineBlock{
   display: inline-block;
   box-sizing: border-box;
@@ -13,6 +17,9 @@
 
     border: 0;
     zoom: 1;
+    overflow: hidden;
+    position: relative;
+    @heightLarge: 32px;
 
     ul, li{
       list-style: none;
@@ -29,20 +36,26 @@
         font-weight: 500;
         cursor: pointer;
         img{
-          width: 100%;
-          height: auto;
+          display: block;
+          width: 16px;
+          height: 16px;
+          margin: 50% auto;
+          transform: translate(0, -50%);
         }
       }
       &-large{
-        width: 32px;
-        height: 32px;
+        width: @heightLarge;
+        height: @heightLarge;
         border: 1px solid rgba(0, 0, 0, .25);
-        line-height: 32px;
+        line-height: @heightLarge;
         &-active{
           color: @color-red;
           border: 1px solid @color-red;
         }
-        &-disabled{
+      }
+      &-disabled{
+        cursor: not-allowed;
+        &:hover{
           cursor: not-allowed;
         }
       }
@@ -55,9 +68,35 @@
     }
     &-quicklyPage{
       .inlineBlock;
+      vertical-align: top;
+      margin-left: 20px;
+      line-height: @heightLarge;
+      input{
+        position: relative;
+        display: inline-block;
+        padding: 4px 11px;
+        //width: 100%;
+        //height: @heightLarge;
+        font-size: @fontSizeNormal;
+        //line-height: 1.5;
+        color: rgba(0,0,0,.65);
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        margin: 0 8px;
+        width: 30px;
+      }
     }
     &-pageTotal{
       .inlineBlock;
+      vertical-align: top;
+      margin-left: 20px;
+      line-height: @heightLarge;
+      font-size: @fontSizeNormal;
+      color: rgba(0,0,0,.65);
     }
   }
 }

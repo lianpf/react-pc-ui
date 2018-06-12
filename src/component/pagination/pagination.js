@@ -99,13 +99,20 @@ export default class Pagination extends React.Component{
       this.changePage(this.state.current + 1);
     }
   };
+  // 计算 totalPage
+  calculateTotalPage = () => {
+    const { total } = this.props;
+    const { pageSize } = this.state;
+
+    return Math.ceil(total/pageSize);
+  };
 
   hasPrev = () => {
     return this.state.current > 1;
   };
 
   hasNext = () => {
-    return this.state.current < this.calculatePage();
+    return this.state.current < this.calculateTotalPage();
   };
   inputPage(value) {
     this.setState({
@@ -114,10 +121,19 @@ export default class Pagination extends React.Component{
   }
   go = (e) => {
     let value = this.state.goInputText;
+
+    const totalPage = this.calculateTotalPage();
+
     if (value === '') {
       return;
     }
     value = isNaN(value) ? this.state.current : Number(value);
+    if ( value < 1) {
+      return;
+    }
+    if (value > totalPage) {
+      value = totalPage;
+    }
     if (e.keyCode === 13 || e.type === 'click') {
       this.setState({
         goInputText: '',
@@ -132,7 +148,7 @@ export default class Pagination extends React.Component{
     const { total } = this.props;
     const { pageSize, current } = this.state;
 
-    const totalPage = Math.ceil(total/pageSize);
+    const totalPage = this.calculateTotalPage();
 
     let pageList = [];
     for(let i = 0; i < totalPage; i++) {
@@ -147,11 +163,21 @@ export default class Pagination extends React.Component{
     return (
         <div className={`${prefixCls}`}>
           <ul className={`${prefixCls}-pageList`}>
-            <li className={`${prefixCls}-pageList-basic ${prefixCls}-pageList-large`}>
+            <li
+                className={`${prefixCls}-pageList-basic
+                ${prefixCls}-pageList-large
+                ${current === 1 ? `${prefixCls}-pageList-disabled`: ''}
+                `}
+            >
               <img src={leftIcon} alt="" onClick={this.prevPage} />
             </li>
             {pageList}
-            <li className={`${prefixCls}-pageList-basic ${prefixCls}-pageList-large`}>
+            <li
+                className={`${prefixCls}-pageList-basic
+                ${prefixCls}-pageList-large
+                ${current === totalPage ? `${prefixCls}-pageList-disabled`: ''}
+                `}
+            >
               <img src={rightIcon} alt="" onClick={this.nextPage} />
             </li>
           </ul>
