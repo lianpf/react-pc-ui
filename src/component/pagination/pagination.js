@@ -18,6 +18,7 @@ export default class Pagination extends React.Component{
     size: "",
     showQuickJumper: false,
     hideOnSinglePage: false,
+    showTotal: false,
     showSizeChanger: false,
     onShowSizeChange: () => {},
     onChange: () => {}
@@ -148,9 +149,13 @@ export default class Pagination extends React.Component{
 
 
   render(){
-    const { total } = this.props;
+    const { total, showQuickJumper, hideOnSinglePage, showTotal } = this.props;
     const { pageSize, current, pageBufferSize } = this.state;
     const totalPage = this.calculateTotalPage();
+
+    if (totalPage === 1 && hideOnSinglePage) {
+      return null;
+    }
 
     let jumpPrev = null;
     let jumpNext = null;
@@ -278,17 +283,25 @@ export default class Pagination extends React.Component{
             {/*<option value ="30">30条/页</option>*/}
             {/*<option value ="40">40条/页</option>*/}
           {/*</select>*/}
-          <div className={`${prefixCls}-quicklyPage`}>
-            跳至 <input
-              type="text"
-              value={this.state.goInputText}
-              onChange={(e) => this.inputPage(e.target.value)}
-              onKeyUp={this.go}
-          /> 页
-          </div>
-          <div className={`${prefixCls}-pageTotal`}>
-            总共{total}条, 共{Math.ceil(total / pageSize)}页
-          </div>
+          {
+            showQuickJumper ? (
+                <div className={`${prefixCls}-quicklyPage`}>
+                  跳至 <input
+                    type="text"
+                    value={this.state.goInputText}
+                    onChange={(e) => this.inputPage(e.target.value)}
+                    onKeyUp={this.go}
+                /> 页
+                </div>
+            ) : ''
+          }
+          {
+            showTotal ? (
+                <div className={`${prefixCls}-pageTotal`}>
+                  总共{total}条, 共{Math.ceil(total / pageSize)}页
+                </div>
+            ) : ''
+          }
         </div>
     );
   }

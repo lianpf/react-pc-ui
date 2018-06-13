@@ -49,6 +49,11 @@ const options = {
         type: 'boolean',
         default: 'false',
       }, {
+        param: 'showTotal',
+        desc: '是否显示总条数&总页数message',
+        type: 'boolean',
+        default: 'false',
+      }, {
         param: 'hideOnSinglePage',
         desc: '只有一页时是否隐藏分页器',
         type: 'boolean',
@@ -76,13 +81,25 @@ const options = {
 class Index extends React.Component {
   constructor(props) {
     super(props);
+
+    this.pageChange = this.pageChange.bind(this);
+  }
+
+  pageChange(page, pageSize) {
+    console.log("--example-pagination-pageChange-page--", page);
+    console.log("--example-pagination-pageChange-pageSize--", pageSize);
   }
 
   render() {
+    const self = this;
     const params = {
       total: 150,
       pageSize: 10,
-      current: 6,
+      current: 1,
+      showQuickJumper: true,
+      hideOnSinglePage: false,
+      showTotal: true,
+      onChange: self.pageChange,
     };
     return (
         <div>
