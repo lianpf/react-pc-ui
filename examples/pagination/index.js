@@ -99,6 +99,7 @@ class Index extends React.Component {
       showQuickJumper: true,
       hideOnSinglePage: false,
       showTotal: true,
+      size: "",
       onChange: self.pageChange,
     };
     return (

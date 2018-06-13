@@ -20,6 +20,7 @@
     overflow: hidden;
     position: relative;
     @heightLarge: 32px;
+    @heightSmall: 24px;
 
     ul, li{
       list-style: none;
@@ -43,14 +44,28 @@
           transform: translate(0, -50%);
         }
       }
+      &-jump-prev-large, &-jump-next-large{
+        &:after {
+          height: @heightLarge;
+          width: @heightLarge;
+          line-height: @heightLarge;
+        }
+      }
+      &-jump-prev-small, &-jump-next-small{
+        &:after {
+          height: @heightSmall;
+          width: @heightSmall;
+          line-height: @heightSmall;
+        }
+      }
       &-jump-prev, &-jump-next {
         outline: none;
         cursor: pointer;
         &:after {
           content: "•••";
-          height: @heightLarge;
-          width: @heightLarge;
-          line-height: @heightLarge;
+          //height: @heightLarge;
+          //width: @heightLarge;
+          //line-height: @heightLarge;
           text-align: center;
           display: block;
           letter-spacing: 2px;
@@ -58,7 +73,6 @@
           font-size: 12px;
           margin-top: 1px;
         }
-
         &:hover {
           &:after {
             height: @heightLarge;
@@ -84,22 +98,23 @@
           }
         }
       }
-      &-ellipsis{
-        width: @heightLarge;
-        height: @heightLarge;
-        img{
-          display: block;
-          width: @heightLarge;
-          height: @heightLarge;
-          margin: 50% auto;
-          transform: translate(0, -50%);
-        }
-      }
       &-large{
         width: @heightLarge;
         height: @heightLarge;
         border: 1px solid rgba(0, 0, 0, .25);
         line-height: @heightLarge;
+        &-active{
+          color: @color-red;
+          border: 1px solid @color-red;
+        }
+        &:not(:last-child){
+          margin-right: 8px;
+        }
+      }
+      &-small{
+        width: @heightSmall;
+        height: @heightSmall;
+        line-height: @heightSmall;
         &-active{
           color: @color-red;
           border: 1px solid @color-red;
@@ -111,9 +126,6 @@
           cursor: not-allowed;
         }
       }
-      li:not(:last-child){
-        margin-right: 8px;
-      }
     }
     &-showPage{
       .inlineBlock;
@@ -122,7 +134,6 @@
       .inlineBlock;
       vertical-align: top;
       margin-left: 20px;
-      line-height: @heightLarge;
       input{
         position: relative;
         display: inline-block;
@@ -142,13 +153,31 @@
         width: 30px;
       }
     }
+    &-quicklyPage-large{
+      line-height: @heightLarge;
+    }
+    &-quicklyPage-small{
+      margin-left: 10px;
+      line-height: @heightSmall;
+      input{
+        padding: 0 2px;
+        margin: 0 4px;
+        width: 30px;
+      }
+    }
     &-pageTotal{
       .inlineBlock;
       vertical-align: top;
       margin-left: 20px;
-      line-height: @heightLarge;
       font-size: @fontSizeNormal;
       color: rgba(0,0,0,.65);
+    }
+    &-pageTotal-large {
+      line-height: @heightLarge;
+    }
+    &-pageTotal-small {
+      margin-left: 10px;
+      line-height: @heightSmall;
     }
   }
 }

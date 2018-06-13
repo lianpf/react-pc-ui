@@ -144,12 +144,12 @@ export default class Pagination extends React.Component{
 
   jumpNext = () => {
     this.changePage(this.getJumpNextPage());
-  }
+  };
 
 
 
   render(){
-    const { total, showQuickJumper, hideOnSinglePage, showTotal } = this.props;
+    const { total, showQuickJumper, hideOnSinglePage, showTotal, size } = this.props;
     const { pageSize, current, pageBufferSize } = this.state;
     const totalPage = this.calculateTotalPage();
 
@@ -157,6 +157,7 @@ export default class Pagination extends React.Component{
       return null;
     }
 
+    let paginationSize = size === "small" ? "small" : "large";
     let jumpPrev = null;
     let jumpNext = null;
     let lastPager = null;
@@ -167,7 +168,7 @@ export default class Pagination extends React.Component{
         pageList.push(<li
             className={`${prefixCls}-pageList-basic
           ${prefixCls}-pageList-large
-          ${current === i + 1 ? `${prefixCls}-pageList-large-active` : ''}`}
+          ${current === i + 1 ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
             key={`page-${i}`}
             onClick={() => this.changePage(i+1)}
         >{i + 1}</li>)
@@ -175,7 +176,9 @@ export default class Pagination extends React.Component{
     } else {
       jumpPrev = (
           <li
-              className={`${prefixCls}-pageList-jump-prev`}
+              className={`
+              ${prefixCls}-pageList-jump-prev
+              ${prefixCls}-pageList-jump-prev-${paginationSize}`}
               key="prev"
               onClick={this.jumpPrev}
               tabIndex="0"
@@ -186,7 +189,9 @@ export default class Pagination extends React.Component{
       );
       jumpNext = (
           <li
-              className={`${prefixCls}-pageList-jump-next`}
+              className={`
+              ${prefixCls}-pageList-jump-next
+              ${prefixCls}-pageList-jump-next-${paginationSize}`}
               key="next"
               tabIndex="0"
               onClick={this.jumpNext}
@@ -198,8 +203,8 @@ export default class Pagination extends React.Component{
       lastPager = (
           <li
               className={`${prefixCls}-pageList-basic
-              ${prefixCls}-pageList-large
-              ${current === totalPage ? `${prefixCls}-pageList-large-active` : ''}`}
+              ${prefixCls}-pageList-${paginationSize}
+              ${current === totalPage ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
               key={`page-${totalPage}`}
               onClick={() => this.changePage(totalPage)}
           >{totalPage}</li>
@@ -207,8 +212,8 @@ export default class Pagination extends React.Component{
       firstPager = (
           <li
               className={`${prefixCls}-pageList-basic
-              ${prefixCls}-pageList-large
-              ${current === 1 ? `${prefixCls}-pageList-large-active` : ''}`}
+              ${prefixCls}-pageList-${paginationSize}
+              ${current === 1 ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
               key={`page-${1}`}
               onClick={() => this.changePage(1)}
           >{1}</li>
@@ -226,8 +231,8 @@ export default class Pagination extends React.Component{
       for(let i = left; i <= right; i++) {
         pageList.push(<li
             className={`${prefixCls}-pageList-basic
-          ${prefixCls}-pageList-large
-          ${current === i ? `${prefixCls}-pageList-large-active` : ''}`}
+          ${prefixCls}-pageList-${paginationSize}
+          ${current === i ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
             key={`page-${i}`}
             onClick={() => this.changePage(i)}
         >{i}</li>)
@@ -261,7 +266,7 @@ export default class Pagination extends React.Component{
           <ul className={`${prefixCls}-pageList`}>
             <li
                 className={`${prefixCls}-pageList-basic
-                ${prefixCls}-pageList-large
+                ${prefixCls}-pageList-${paginationSize}
                 ${current === 1 ? `${prefixCls}-pageList-disabled`: ''}
                 `}
             >
@@ -270,7 +275,7 @@ export default class Pagination extends React.Component{
             {pageList}
             <li
                 className={`${prefixCls}-pageList-basic
-                ${prefixCls}-pageList-large
+                ${prefixCls}-pageList-${paginationSize}
                 ${current === totalPage ? `${prefixCls}-pageList-disabled`: ''}
                 `}
             >
@@ -285,7 +290,9 @@ export default class Pagination extends React.Component{
           {/*</select>*/}
           {
             showQuickJumper ? (
-                <div className={`${prefixCls}-quicklyPage`}>
+                <div className={`
+                ${prefixCls}-quicklyPage
+                ${prefixCls}-quicklyPage-${paginationSize}`}>
                   跳至 <input
                     type="text"
                     value={this.state.goInputText}
@@ -297,7 +304,9 @@ export default class Pagination extends React.Component{
           }
           {
             showTotal ? (
-                <div className={`${prefixCls}-pageTotal`}>
+                <div className={`
+                ${prefixCls}-pageTotal
+                ${prefixCls}-pageTotal-${paginationSize}`}>
                   总共{total}条, 共{Math.ceil(total / pageSize)}页
                 </div>
             ) : ''
