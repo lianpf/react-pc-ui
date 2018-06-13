@@ -79,12 +79,16 @@ class Index extends React.Component {
   }
 
   render() {
-    // const params = {};
+    const params = {
+      total: 150,
+      pageSize: 10,
+      current: 6,
+    };
     return (
         <div>
           <Template options={options}>
             <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '22px 8px 12px', borderRadius: '5px'}}>
-              <Pagination />
+              <Pagination {...params} />
             </div>
           </Template>
         </div>
