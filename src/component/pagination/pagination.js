@@ -8,22 +8,6 @@ import rightIcon from './img/right.png';
 
 const prefixCls = 'react-pc-ui-pagination';
 
-function getDefaultActiveKey(props) {
-  let activeKey;
-  React.Children.forEach(props.children, (child) => {
-    if (child && !activeKey) {
-      activeKey = child.key;
-    }
-  });
-  return activeKey;
-}
-
-function activeKeyIsValid(props, key) {
-  const keys = React.Children.map(props.children, child => child && child.key);
-  return keys.indexOf(key) >= 0;
-}
-
-
 export default class Pagination extends React.Component{
   static defaultProps = {
     // current: void 0,
@@ -186,21 +170,25 @@ export default class Pagination extends React.Component{
     } else {
       jumpPrev = (
           <li
+              className={`${prefixCls}-pageList-jump-prev`}
               key="prev"
               onClick={this.jumpPrev}
               tabIndex="0"
               // onKeyPress={this.runIfEnterJumpPrev}
-              className={`${prefixCls}-jump-prev`}
-          >...</li>
+          >
+            {/*<img src={ellipsisIcon} alt=""/>*/}
+          </li>
       );
       jumpNext = (
           <li
+              className={`${prefixCls}-pageList-jump-next`}
               key="next"
               tabIndex="0"
               onClick={this.jumpNext}
               // onKeyPress={this.runIfEnterJumpNext}
-              className={`${prefixCls}-jump-next`}
-          >...</li>
+          >
+            {/*<img src={ellipsisIcon} alt=""/>*/}
+          </li>
       );
       lastPager = (
           <li
@@ -244,15 +232,15 @@ export default class Pagination extends React.Component{
         // pageList[0] = React.cloneElement(pagerList[0], {
         //   className: `${prefixCls}-item-after-jump-prev`,
         // });
-        pageList[0] = jumpPrev;
-        // pageList.unshift(jumpPrev);
+        // pageList[0] = jumpPrev;
+        pageList.unshift(jumpPrev);
       }
       if (totalPage - current >= pageBufferSize * 2 && current !== totalPage - 2) {
         // pageList[pageList.length - 1] = React.cloneElement(pageList[pageList.length - 1], {
         //   className: `${prefixCls}-item-before-jump-next`,
         // });
-        pageList[pageList.length - 1] = jumpNext;
-        // pageList.push(jumpNext);
+        // pageList[pageList.length - 1] = jumpNext;
+        pageList.push(jumpNext);
       }
 
       if (left !== 1) {
