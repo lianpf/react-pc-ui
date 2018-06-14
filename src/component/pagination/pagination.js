@@ -239,17 +239,9 @@ export default class Pagination extends React.Component{
       }
 
       if (current - 1 >= pageBufferSize * 2 && current !== 1 + 2) {
-        // pageList[0] = React.cloneElement(pagerList[0], {
-        //   className: `${prefixCls}-item-after-jump-prev`,
-        // });
-        // pageList[0] = jumpPrev;
         pageList.unshift(jumpPrev);
       }
       if (totalPage - current >= pageBufferSize * 2 && current !== totalPage - 2) {
-        // pageList[pageList.length - 1] = React.cloneElement(pageList[pageList.length - 1], {
-        //   className: `${prefixCls}-item-before-jump-next`,
-        // });
-        // pageList[pageList.length - 1] = jumpNext;
         pageList.push(jumpNext);
       }
 

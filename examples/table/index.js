@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import '../template/index.less';
 import Template from '../template/index';
 import Table from '../../lib/table';
+// import Table from '../../src/component/table';
 
 const dataSource = [{
   key: '1',
@@ -44,6 +45,12 @@ const columns = [{
     </span>
   ),
 }];
+const pagination = {
+  current: 1,
+  pageSize: 10,
+  showQuickJumper: true,
+  showTotal: true,
+};
 
 const options = {
   title: 'Table',
@@ -63,6 +70,11 @@ const options = {
         desc: '数据数组',
         type: 'json数组(Object Array)',
         default: '-',
+      },{
+        param: 'pagination',
+        desc: '分页器，参考组件 pagination 配置项，设为 false 时不展示和进行分页',
+        type: 'object',
+        default: 'false',
       }]
     },
     {
@@ -100,7 +112,7 @@ class Index extends React.Component {
   render() {
     return (
         <Template options={options}>
-          <Table dataSource={dataSource} columns={columns} />
+          <Table dataSource={dataSource} columns={columns} pagination={pagination} />
         </Template>
     );
   }

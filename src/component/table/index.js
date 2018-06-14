@@ -4,27 +4,45 @@ import {connect} from 'react-redux';
 import names from 'classnames';
 import './index.less';
 
+import Pagination from '../../../lib/pagination';
+// import Pagination from '../pagination';
+
 class Index extends React.Component {
   static defaultProps = {
     columns: [],
     dataSource: [],
-    // pagination: false,
+    pagination: false,
     // onChangePage: () => {},
     rowClassName: (record, index) => {}
-  }
+  };
 
   static propTypes = {
     columns: PropTypes.array,
     dataSource: PropTypes.array,
-    // pagination: PropTypes.oneOfType([
-    //   PropTypes.bool ,
-    //   PropTypes.object,
-    // ]),
+    pagination: PropTypes.oneOfType([
+      PropTypes.bool ,
+      PropTypes.object,
+    ]),
     // onChangePage: PropTypes.func,
     rowClassName: PropTypes.func,
-  }
+  };
   constructor(props) {
     super(props);
+    let pagination = false;
+    if ('pagination' in props && props.pagination) {
+      pagination = props.pagination;
+    }
+
+    this.state = {
+      pagination,
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if ('pagination' in nextProps && nextProps.pagination ) {
+      this.setState({
+        pagination: nextProps.pagination,
+      });
+    }
   }
 
   renderHeader(){
@@ -73,18 +91,23 @@ class Index extends React.Component {
   }
 
   render() {
+    let { pagination } = this.props;
+    // console.log("--pagination-child--", pagination);
     return (
-        <table className={names('table')}>
-          {this.renderHeader()}
-          {this.renderBody()}
-        </table>
+        <div className={names("table-wrapper")}>
+          <table className={names('table')}>
+            {this.renderHeader()}
+            {this.renderBody()}
+          </table>
+          {
+            !!pagination ? (<div className={names('pager')}>
+              <Pagination {...pagination} />
+            </div>) : ''
+          }
+        </div>
     );
   }
 }
-// function mapStateToProps(state) {
-//   const { borrowMoney } = state;
-//   return { borrowMoney };
-// }
 
 export default connect()(Index);
 
