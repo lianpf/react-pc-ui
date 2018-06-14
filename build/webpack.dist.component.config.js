@@ -13,7 +13,9 @@ module.exports = merge(webpackBaseConfig, {
     breadcrumb: './src/component/breadcrumb/index',
     tabs: './src/component/tabs/index',
     slider: './src/component/slider/index',
-    steps: './src/component/steps/index'
+    steps: './src/component/steps/index',
+    countdown: './src/component/countdown/index',
+    pagination: './src/component/pagination/index',
   },
   /**
    * 多个入口起点
