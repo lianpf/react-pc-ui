@@ -6,7 +6,8 @@ import Template from '../template/index';
 import Steps from '../../lib/steps/index';
 import './index.less';
 
-import Countdown from '../../src/component/countdown';
+// import Countdown from '../../src/component/countdown';
+import Countdown from '../../lib/countdown';
 
 const options = {
   title: 'Countdown',

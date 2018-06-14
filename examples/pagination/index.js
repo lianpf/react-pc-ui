@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-import Pagination from '../../src/component/pagination';
+import Pagination from '../../lib/pagination';
 
 const options = {
   title: 'Pagination',
