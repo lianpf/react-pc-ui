@@ -8,7 +8,7 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 module.exports = merge(webpackBaseConfig, {
     // 入口
     entry: {
-      main: './examples/main'
+      index: './examples/index'
     },
     // 输出
     output: {
