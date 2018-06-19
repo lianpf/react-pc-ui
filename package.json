@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --config ./build/webpack.dev.config.js",
     "build:component": "webpack --config ./build/webpack.dist.component.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:examples": "webpack --config ./build/webpack.dist.config.js"
   },
   "repository": {
     "type": "git",
