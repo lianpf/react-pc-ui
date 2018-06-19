@@ -27,6 +27,10 @@ Button、Modal、Table、Message、Breadcrumb、Tabs、Slider、Step
 ### npm包
 ### Example
 
+#### 线上文档
+https://lianpf.github.io/react-pc-ui/dist/#/component
+
+#### 本地文档
 http://localhost:8000
 
 ### install
