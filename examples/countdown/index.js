@@ -5,6 +5,7 @@ import '../template/index.less';
 import Template from '../template/index';
 import Steps from '../../lib/steps/index';
 import './index.less';
+import '../utils/common.less';
 
 // import Countdown from '../../src/component/countdown';
 import Countdown from '../../lib/countdown';
@@ -67,6 +68,13 @@ const options = {
   ]
 };
 
+
+let getBrace = (props) => {
+  return (
+      <span>"{"{props.children}"}"</span>
+  )
+};
+
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -87,6 +95,19 @@ class Index extends React.Component {
   }
 
   render() {
+
+    let componentStr = "{Countdown}";
+    let _className="className={'button'}";
+    let _disabledClassName="disabledClassName={'disabledButton'}";
+    let _duration="duration={10}";
+    let _countingText="countingText={'__TIME__s后再次获取'}";
+    let _highestLevelState="highestLevelState={'-1'}";
+    let _onClick="onClick={this.clickFunc}";
+    let _onStart="onStart={this.onStart}";
+    let _onEnd="onEnd={this.onEnd}";
+
+
+
     return (
         <div>
           <Template options={options}>
@@ -101,6 +122,25 @@ class Index extends React.Component {
                   onStart={this.onStart}
                   onEnd={this.onEnd}
               />
+            </div>
+
+            {/*代码展示*/}
+            <div className={'showCoding'}>
+              <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span> 'react';</div>
+              <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div><br />
+              React.render(<br />
+              <div className={'textLeft'}>
+                &lt; <span className={'highLightRed'}>Countdown</span>  <br />
+                <div className={'textLeft'}>{_className}</div>
+                <div className={'textLeft'}>{_disabledClassName}</div>
+                <div className={'textLeft'}>{_duration}</div>
+                <div className={'textLeft'}>{_countingText}</div>
+                <div className={'textLeft'}>{_highestLevelState}</div>
+                <div className={'textLeft'}>{_onClick}</div>
+                <div className={'textLeft'}>{_onStart}</div>
+                <div className={'textLeft'}>{_onEnd}</div>
+                /&gt;, container);
+              </div>
             </div>
           </Template>
         </div>
