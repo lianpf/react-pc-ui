@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
+import HomePage from '../homePage/index';
 import Button from '../button/index';
 import Table from '../table/index';
 import Message from '../message/index';
@@ -24,7 +25,7 @@ const menuListConfig = [
     text: '组件库',
     path: '/component',
     exact: true,
-    main: () => (<div>react-pc-library</div>)
+    main: () => <HomePage />
   },
   {
     isShow: true,
@@ -124,6 +125,11 @@ class Index extends React.Component {
 
     return (
         <div className={`layout`} >
+          <div className={`header`}>
+            <div className={'logo'}>
+              react-pc-ui
+            </div>
+          </div>
           <div className={`leftMenu`}>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
               {
