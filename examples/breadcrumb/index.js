@@ -38,32 +38,40 @@ const options = {
   ]
 };
 
-const paths = [
-  {
-    'path': '/#/component',
-    'text': '首页'
-  },
-  {
-    'path': '',
-    'text': '一级面包屑'
-  },
-  {
-    'path': '',
-    'text': '当前页面'
-  }
-];
-
 class Index extends React.Component {
   constructor(props) {
     super(props);
   }
+  componentWillMount() {
+    this.setState({
+      origin: window.location.origin
+    })
+  }
+  getPaths = () => {
+    return [
+      {
+        'path': `${this.state.origin}/#/component`,
+        'text': '首页'
+      },
+      {
+        'path': '',
+        'text': '一级面包屑'
+      },
+      {
+        'path': '',
+        'text': '当前页面'
+      }
+    ];
+  };
+
   
   render() {
+
     return (
         <div>
           <Template options={options}>
             <div style={{background: "rgba(0, 0, 0, .1)", padding: '8px', borderRadius: '5px'}}>
-              <Breadcrumb paths={paths} />
+              <Breadcrumb paths={this.getPaths()} />
             </div>
           </Template>
         </div>
