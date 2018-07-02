@@ -1,22 +1,40 @@
 const path = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+function getEntry(globPath) {
+  let files = glob.sync(globPath);
+  let entries = {};
+  let entry = void 0;
+  let dirname = void 0;
+  let extname = void 0;
+
+  for (let i = 0; i < files.length; i++) {
+    let key = void 0;
+    entry = files[i];
+    dirname = path.dirname(entry);
+    extname = path.extname(entry);
+
+    let startPosition = entry.indexOf('src/component/');
+
+    if( startPosition !== -1 && extname === '.js') {
+      key = dirname.slice((startPosition + 'src/component/'.length), dirname.length);
+    }
+    entries[key] = entry;
+  }
+  return entries;
+}
+
+
+function addEntry() {
+  let entries = getEntry('./src/component/**/index.js');
+  return entries;
+}
 module.exports = merge(webpackBaseConfig, {
-  // 多页面(入口)配置
-  entry: {
-    button: './src/component/button/index.js',
-    table: './src/component/table/index.js',
-    message: './src/component/message/index.js',
-    modal: './src/component/modal/index.js',
-    breadcrumb: './src/component/breadcrumb/index',
-    tabs: './src/component/tabs/index',
-    slider: './src/component/slider/index',
-    steps: './src/component/steps/index',
-    countdown: './src/component/countdown/index',
-    pagination: './src/component/pagination/index',
-  },
+  entry: addEntry(),
   output: {
     path: path.resolve(__dirname, '../lib'), //输出目标
     filename: '[name]/index.js',
