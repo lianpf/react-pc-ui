@@ -81,21 +81,23 @@ class Index extends React.Component {
     return (
         <div>
           <Template options={options}>
-            <div
-                style={{border: "1px solid rgba(0, 0, 0, .1)",
-                  padding: '8px', borderRadius: '5px', width: '500px', display: 'inline-block'}}>
-              <Slider onChange={(value) => this.sliderChange(value)} value={this.state.value}/>
-            </div>
-            <div style={{display: 'inline-block', verticalAlign: 'top', marginLeft: "10px"}}>
-              value: {this.state.value}
-              &nbsp;|&nbsp;
-              手动输入: <input type="text" value={this.state.value}
-                           style={{width:"120px", height: "21px",
-                             borderBottomLeftRadius: "3px", borderBottomRightRadius: "3px",
-                             borderTopLeftRadius: "3px", borderTopRightRadius: "3px",
-                             outline: 'none', border: "1px solid rgba(0, 0, 0, .65)"}}
-                           placeholder="0~100之间" onChange={(e) => this.changeField(e)}/>
+            <div>
+              <div
+                  style={{border: "1px solid rgba(0, 0, 0, .1)",
+                    padding: '8px', borderRadius: '5px', width: '500px', display: 'inline-block'}}>
+                <Slider onChange={(value) => this.sliderChange(value)} value={this.state.value}/>
               </div>
+              <div style={{display: 'inline-block', verticalAlign: 'top', marginLeft: "10px"}}>
+                value: {this.state.value}
+                &nbsp;|&nbsp;
+                手动输入: <input type="text" value={this.state.value}
+                             style={{width:"120px", height: "21px",
+                               borderBottomLeftRadius: "3px", borderBottomRightRadius: "3px",
+                               borderTopLeftRadius: "3px", borderTopRightRadius: "3px",
+                               outline: 'none', border: "1px solid rgba(0, 0, 0, .65)"}}
+                             placeholder="0~100之间" onChange={(e) => this.changeField(e)}/>
+              </div>
+            </div>
           </Template>
         </div>
     );
