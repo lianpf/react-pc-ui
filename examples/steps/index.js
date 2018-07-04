@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-import Steps from '../../lib/steps/index';
+// import Steps from '../../lib/steps/index';
+import Steps from '../../src/component/steps/index';
+let Step =  Steps.Step;
 
 const stepsParams = {
   current: 1,
@@ -71,7 +73,13 @@ class Index extends React.Component {
         <div>
           <Template options={options}>
             <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '22px 8px 12px', borderRadius: '5px'}}>
-              <Steps params={stepsParams} />
+              <div style={{width: '50%'}}>
+                <Steps status='error' current={1}>
+                  <Step text="第一步" />
+                  <Step text="第二步" />
+                  <Step text="第三步" />
+                </Steps>
+              </div>
             </div>
           </Template>
         </div>
