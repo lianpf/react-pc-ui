@@ -25,17 +25,17 @@ function activeKeyIsValid(props, key) {
 
 
 export default class Tabs extends React.Component{
-  // static defaultProps = {
-  //   activeKey: void 0,
-  //   defaultActiveKey: void 0,
-  //   onChange: () => {}
-  // };
-  //
-  // static propTypes = {
-  //   activeKey: PropTypes.string,
-  //   defaultActiveKey: PropTypes.string,
-  //   onChange: PropTypes.func
-  // };
+  static defaultProps = {
+    activeKey: void 0,
+    defaultActiveKey: void 0,
+    onChange: () => {}
+  };
+
+  static propTypes = {
+    activeKey: PropTypes.string,
+    defaultActiveKey: PropTypes.string,
+    onChange: PropTypes.func
+  };
   constructor(props) {
     super(props);
     let activeKey;

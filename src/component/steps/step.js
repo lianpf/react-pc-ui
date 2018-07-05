@@ -1,8 +1,8 @@
 import React from 'react';
-import './index.less';
-import names from 'classnames'
+import PropTypes from 'prop-types';
 
-const prefixCls = 'react-pc-ui-tabs';
+import names from 'classnames'
+import './index.less';
 
 class Step extends React.Component{
   constructor(props) {
@@ -11,7 +11,7 @@ class Step extends React.Component{
 
   render(){
     const props = this.props;
-    const { current, stepNumber, itemWidth, isFirstChild, text, prefixCls, className, status
+    const { current, stepNumber, itemWidth, isFirstChild, text, prefixCls, className, status, size
     } = props;
 
     const classString = names(
@@ -27,14 +27,14 @@ class Step extends React.Component{
         <div className={classString}>
           {
             !isFirstChild ? (
-                <div className={`${prefixCls}-item-line`}>
+                <div className={`${prefixCls}-item-line ${prefixCls}-item-line-${size}`}>
                   <div className={`${prefixCls}-item-line-status ${prefixCls}-item-line-${status}`}></div>
                 </div>
             ) : ''
           }
           <div className={`${prefixCls}-item-step`}>
-            <div className={`${prefixCls}-item-step-content ${prefixCls}-item-step-content-${status}`}>
-              {stepNumber}
+            <div className={`${prefixCls}-item-step-content ${prefixCls}-item-step-content-${size} ${prefixCls}-item-step-content-${status}`}>
+              {status !== 'error' ? stepNumber : '!'}
             </div>
             <div className={`${prefixCls}-item-step-text ${prefixCls}-item-step-text-${status}`}>{status !== 'error' ? text : '失败'}</div>
           </div>

@@ -25,11 +25,13 @@
 @content-width: 80px;
 
 
+@stepsSizeDefault: 32px;
+@stepsSizeSmall: 24px;
 @contentWidth: 66px;
 
 :global{
   .@{steps} {
-    font-size: 14px;
+    font-size: @fontSizeNormal;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -41,120 +43,94 @@
       float: left;
       position: relative;
       overflow: hidden;
-      &-step{
-        display: inline-block;
-        vertical-align: top;
-        box-sizing: border-box;
-        width: @contentWidth;
-        margin-left: calc(~'100% - @{contentWidth}');
-        &-content{
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          text-align: center;
-          line-height: 36px;
-          font-size: @fontSize18;
-          color: @colorWhite;
-          box-sizing: border-box;
-          margin-left: 15px;
-          margin-bottom: 10px;
-          &-finish{
-            background: @colorBlue;
-          }
-          &-wait{
-            background: @colorGray;
-            color: @colorGray5;
-          }
-          &-error{
-            background: @colorRed;
-          }
-        }
-        &-text{
-          width: 66px;
-          text-align: center;
-          font-size: @fontSize16;
-          color: @colorBlue;
-          &-finish{
-            color: @colorBlue;
-          }
-          &-wait{
-            color: @colorGray5;
-          }
-          &-error{
-            color: @colorRed;
-          }
-        }
-      }
-      &-line{
-        position: absolute;
-        display: inline-block;
-        vertical-align: top;
-        height: 36px;
-        line-height: 36px;
-        width: calc(~'100% - @{contentWidth}');
-        margin: 0 auto;
-        box-sizing: border-box;
-        &-status{
-          display: inline-block;
-          height: 3px;
-          width: 100%;
-        }
-        &-finish{
-          background: @colorBlue;
-        }
-        &-wait{
-          background: @colorGray;
-        }
-        &-error{
-          background: @colorRed;
-        }
-      }
     }
-
-
-    .step{
-      box-sizing: border-box;
-      .stepItem{
-        box-sizing: border-box;
-        .content{
-          width: 36px;
-          height: 36px;
-          background: @colorBlue;
-          border-radius: 50%;
-          text-align: center;
-          line-height: 36px;
-          font-size: @fontSize18;
-          color: @colorWhite;
-          box-sizing: border-box;
-          margin-left: 15px;
-          margin-bottom: 10px;
-        }
-        .contentNoActive{
-          background: @colorGray;
-          color: @colorGray5;
-        }
-        .errorContent{
-          background: @colorRed;
-        }
-
-        .errorStepText{
-          color: @colorRed;
-        }
-        .stepTextNoActive{
-          color: @colorGray2;
-        }
-      }
-
-      .stepLine{
-
-      }
+  }
+  .@{steps}-item-step{
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: @contentWidth;
+    margin-left: calc(~'100% - @{contentWidth}');
+  }
+  .@{steps}-item-step-content{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    font-size: @fontSize18;
+    color: @colorWhite;
+    box-sizing: border-box;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    &-finish{
+      background: @colorBlue;
     }
+    &-wait{
+      background: @colorGray;
+      color: @colorGray5;
+    }
+    &-error{
+      background: @colorRed;
+    }
+  }
+  .@{steps}-item-step-content-default{
+    width: @stepsSizeDefault;
+    height: @stepsSizeDefault;
+    line-height: @stepsSizeDefault;
+  }
+  .@{steps}-item-step-content-small{
+    width: @stepsSizeSmall;
+    height: @stepsSizeSmall;
+    line-height: @stepsSizeSmall;
+  }
+  .@{steps}-item-step-text{
+    width: 66px;
+    text-align: center;
+    font-size: @fontSize16;
+    color: @colorBlue;
+    &-finish{
+      color: @colorBlue;
+    }
+    &-wait{
+      color: @colorGray5;
+    }
+    &-error{
+      color: @colorRed;
+    }
+  }
+  .@{steps}-item-line{
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(~'100% - @{contentWidth}');
+    margin: 0 auto;
+    box-sizing: border-box;
+    &-status{
+      display: inline-block;
+      height: 3px;
+      width: 100%;
+    }
+    &-finish{
+      background: @colorBlue;
+    }
+    &-wait{
+      background: @colorGray;
+    }
+    &-error{
+      background: @colorRed;
+    }
+  }
+  .@{steps}-item-line-default{
+    height: @stepsSizeDefault;
+    line-height: @stepsSizeDefault;
+  }
+  .@{steps}-item-line-small{
+    height: @stepsSizeSmall;
+    line-height: @stepsSizeSmall;
   }
 }
 
 
 
-.flexParent{
-  display: flex;
-  flex-direction: row;
-}
+
