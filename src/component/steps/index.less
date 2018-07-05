@@ -53,16 +53,11 @@
     margin-left: calc(~'100% - @{contentWidth}');
   }
   .@{steps}-item-step-content{
-    width: 36px;
-    height: 36px;
     border-radius: 50%;
     text-align: center;
-    line-height: 36px;
-    font-size: @fontSize18;
     color: @colorWhite;
     box-sizing: border-box;
-    margin-left: 15px;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
     &-finish{
       background: @colorBlue;
     }
@@ -78,11 +73,13 @@
     width: @stepsSizeDefault;
     height: @stepsSizeDefault;
     line-height: @stepsSizeDefault;
+    font-size: @fontSize18;
   }
   .@{steps}-item-step-content-small{
     width: @stepsSizeSmall;
     height: @stepsSizeSmall;
     line-height: @stepsSizeSmall;
+    font-size: @fontSizeNormal;
   }
   .@{steps}-item-step-text{
     width: 66px;
@@ -98,6 +95,12 @@
     &-error{
       color: @colorRed;
     }
+  }
+  .@{steps}-item-step-text-default{
+    font-size: @fontSize16;
+  }
+  .@{steps}-item-step-text-small{
+    font-size: @fontSizeNormal;
   }
   .@{steps}-item-line{
     position: absolute;

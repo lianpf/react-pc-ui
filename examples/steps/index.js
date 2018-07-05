@@ -22,9 +22,14 @@ const options = {
         default: '0',
       }, {
         param: 'status',
-        desc: '指定当前步骤的状态,可选 wait finish error',
+        desc: '指定当前步骤的状态,可选 wait、finish、error',
         type: 'string',
         default: 'wait',
+      }, {
+        param: 'size',
+        desc: '指定大小，目前支持普通（default）和迷你（small）',
+        type: 'string',
+        default: 'default',
       }]
     },
     {
@@ -36,7 +41,7 @@ const options = {
         default: '-',
       }, {
         param: 'status',
-        desc: '指定状态。当不配置该属性时，会使用 Steps 的 current 来自动指定状态。可选：wait finish error',
+        desc: '指定状态。当不配置该属性时，会使用 Steps 的 current 来自动指定状态。可选：wait、finish、error',
         type: 'string',
         default: 'wait',
       }]
@@ -55,7 +60,7 @@ class Index extends React.Component {
           <Template options={options}>
             <div style={{border: "1px solid rgba(0, 0, 0, .1)", padding: '22px 8px 12px', borderRadius: '5px'}}>
               <div style={{width: '50%'}}>
-                <Steps status='error' current={2}>
+                <Steps status='error' current={2} size="small">
                   <Step text="第一步" />
                   <Step text="第二步" />
                   <Step text="第三步" />

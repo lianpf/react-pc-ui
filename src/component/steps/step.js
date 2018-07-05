@@ -36,7 +36,7 @@ class Step extends React.Component{
             <div className={`${prefixCls}-item-step-content ${prefixCls}-item-step-content-${size} ${prefixCls}-item-step-content-${status}`}>
               {status !== 'error' ? stepNumber : '!'}
             </div>
-            <div className={`${prefixCls}-item-step-text ${prefixCls}-item-step-text-${status}`}>{status !== 'error' ? text : '失败'}</div>
+            <div className={`${prefixCls}-item-step-text ${prefixCls}-item-step-text-${size} ${prefixCls}-item-step-text-${status}`}>{status !== 'error' ? text : '失败'}</div>
           </div>
         </div>
     );
