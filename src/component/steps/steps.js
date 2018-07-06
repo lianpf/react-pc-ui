@@ -72,6 +72,8 @@ export default class Steps extends React.Component{
                 childTotal: childTotal,
                 isFirstChild:  index === 0 ,
                 size: props.size,
+                colorFinish: props.colorFinish || '',
+                colorError: props.colorError || '',
                 ...child.props,
               };
               if (index !== 0) {
