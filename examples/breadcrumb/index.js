@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
+import '../utils/common.less';
 
 import Breadcrumb from '../../lib/breadcrumb/index';
 
@@ -66,12 +67,58 @@ class Index extends React.Component {
 
   
   render() {
+    let componentStr = "{Breadcrumb}";
+    let _field="paths={getPaths()}";
+    let _braceLeft = "{";
+    let _braceRight = "}";
 
     return (
         <div>
           <Template options={options}>
             <div style={{background: "rgba(0, 0, 0, .1)", padding: '8px', borderRadius: '5px'}}>
               <Breadcrumb paths={this.getPaths()} />
+            </div>
+
+            {/*代码展示*/}
+            <div className={'showCoding'}>
+              <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span> 'react';</div>
+              <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div><br />
+
+              <div>
+                let getPath = ()=> {_braceLeft} <br/>
+                <div className={'textLeft'}>
+                  return [
+                  <div className={'textLeft'}>
+                    {_braceLeft}
+                    <div className={'textLeft'}>
+                      'path': `/component`, <br/>
+                      'text': '首页'
+                    </div>
+                    {_braceRight},
+                    {_braceLeft}
+                    <div className={'textLeft'}>
+                      'path': '', <br/>
+                      'text': '一级面包屑'
+                    </div>
+                    {_braceRight},
+                    {_braceLeft}
+                    <div className={'textLeft'}>
+                      'path': '', <br/>
+                      'text': '当前页面'
+                    </div>
+                    {_braceRight}
+                  </div>
+                  ];
+                </div>
+                {_braceRight}
+              </div><br/>
+
+              React.render(<br />
+              <div className={'textLeft'}>
+                &lt; <span className={'highLightRed'}>Breadcrumb</span>  <br />
+                <div className={'textLeft'}>{_field}</div>
+                /&gt;, container);
+              </div>
             </div>
           </Template>
         </div>
