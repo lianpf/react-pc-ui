@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
+import '../utils/common.less';
+
 // import Steps from '../../lib/steps/index';
 import Steps from '../../src/component/steps/index';
 let Step =  Steps.Step;
@@ -75,7 +77,10 @@ class Index extends React.Component {
   }
 
   render() {
-
+    let componentStr = "{Steps}";
+    let _field="{...getParams()}";
+    let _braceLeft = "{";
+    let _braceRight = "}";
 
     return (
         <div>
@@ -87,6 +92,41 @@ class Index extends React.Component {
                   <Step text="第二步" />
                   <Step text="第三步" />
                 </Steps>
+              </div>
+            </div>
+
+            {/*代码展示*/}
+            <div className={'showCoding'}>
+              <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span> 'react';</div>
+              <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div>
+              <div><span className={'highLightBlue'}>let</span> Step =  Steps.Step;</div><br />
+
+              <div>
+                let getParams = ()=> {_braceLeft} <br/>
+                <div className={'textLeft'}>
+                  return {_braceLeft}
+                  <div className={'textLeft'}>
+                    status: `error`, <br/>
+                    current: `2`, <br/>
+                    size: 'default'
+                  </div>
+                  {_braceRight};
+                </div>
+                {_braceRight}
+              </div><br/>
+
+              React.render(<br />
+              <div className={'textLeft'}>
+                &lt;<span className={'highLightRed'}>Steps</span> {_field}&gt;
+
+                <div className={'textLeft'}>
+                  &lt;<span className={'highLightRed'}>Step</span> text="第一步" /&gt; <br/>
+                  &lt;<span className={'highLightRed'}>Step</span> text="第二步" /&gt; <br/>
+                  &lt;<span className={'highLightRed'}>Step</span> text="第三步" /&gt;
+                </div>
+
+                &lt;/<span className={'highLightRed'}>Steps</span>&gt;
+                , container);
               </div>
             </div>
           </Template>

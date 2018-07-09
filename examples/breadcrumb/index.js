@@ -85,7 +85,7 @@ class Index extends React.Component {
               <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div><br />
 
               <div>
-                let getPath = ()=> {_braceLeft} <br/>
+                <span className={'highLightBlue'}>let</span> getPath = ()=> {_braceLeft} <br/>
                 <div className={'textLeft'}>
                   return [
                   <div className={'textLeft'}>
@@ -115,7 +115,7 @@ class Index extends React.Component {
 
               React.render(<br />
               <div className={'textLeft'}>
-                &lt; <span className={'highLightRed'}>Breadcrumb</span>  <br />
+                &lt;<span className={'highLightRed'}>Breadcrumb</span>  <br />
                 <div className={'textLeft'}>{_field}</div>
                 /&gt;, container);
               </div>
