@@ -103,6 +103,7 @@ class Index extends React.Component {
       showTotal: true,
       size: "",
       onChange: self.pageChange,
+      activeColor: "#1890ff"
     };
     return (
         <div>

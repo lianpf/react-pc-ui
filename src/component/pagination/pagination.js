@@ -237,9 +237,12 @@ export default class Pagination extends React.Component{
       for(let i = left; i <= right; i++) {
         pageList.push(<li
             className={`${prefixCls}-pageList-basic
-          ${prefixCls}-pageList-${paginationSize}
-          ${current === i ? `${prefixCls}-pageList-active` : ''}`}
+            ${prefixCls}-pageList-${paginationSize}
+            ${current === i ? `${prefixCls}-pageList-active` : ''}`}
             key={`page-${i}`}
+            style={
+              current === i && this.props.activeColor && this.props.activeColor.length > 0
+                  ? {"color": this.props.activeColor, "borderColor": this.props.activeColor} : {} }
             onClick={() => this.changePage(i)}
         >
           {i}
