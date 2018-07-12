@@ -263,7 +263,6 @@ export default class Pagination extends React.Component{
 
     return (
         <div className={`${prefixCls}`}>
-          111
           <ul className={`${prefixCls}-pageList`}>
             <li
                 className={`${prefixCls}-pageList-basic
