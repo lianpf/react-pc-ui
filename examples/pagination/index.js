@@ -42,9 +42,14 @@ const options = {
         default: '0',
       }, {
         param: 'size',
-        desc: '当为「small」时，是小尺寸分页',
-        type: '',
-        default: '""',
+        desc: '当为「small」时，是小尺寸分页, 可选状态 small、large',
+        type: 'string',
+        default: 'large',
+      }, {
+        param: 'activeColor',
+        desc: 'pager 为 active 状态 color, 支持16进制和rgba',
+        type: 'string',
+        default: '-',
       }, {
         param: 'showQuickJumper',
         desc: '是否可以快速跳转至某页',
