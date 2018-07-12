@@ -85,6 +85,12 @@ class Index extends React.Component {
   }
 
   render() {
+    let componentStr = "{Slider}";
+    let _braceLeft = "{";
+    let _braceRight = "}";
+    let _field0="onChange={sliderChange(value)}";
+    let _field1="color='#1890ff'";
+
     return (
         <div>
           <Template options={options}>
@@ -94,7 +100,7 @@ class Index extends React.Component {
                     border: "1px solid rgba(0, 0, 0, .1)",
                     padding: '8px', borderRadius: '5px', width: '500px', display: 'inline-block'
                   }}>
-                <Slider onChange={(value) => this.sliderChange(value)} value={this.state.value} color="#1890ff"/>
+                <Slider onChange={(value) => this.sliderChange(value)} value={this.state.value} color="#1890ff" />
               </div>
               <div style={{display: 'inline-block', verticalAlign: 'top', marginLeft: "10px"}}>
                 value: {this.state.value}
@@ -107,6 +113,28 @@ class Index extends React.Component {
                                outline: 'none', border: "1px solid rgba(0, 0, 0, .65)"
                              }}
                              placeholder="0~100之间" onChange={(e) => this.changeField(e)}/>
+              </div>
+            </div>
+
+            {/*代码展示*/}
+            <div className={'showCoding'}>
+              <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span> 'react';</div>
+              <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div><br />
+
+              <div>
+                <span className={'highLightBlue'}>function </span> sliderChange(value) {_braceLeft} <br/>
+                <div className={'textLeft'}>
+                  console.log("sliderChange-value:", value)
+                </div>
+                {_braceRight}
+              </div><br/>
+
+              React.render(<br />
+              <div className={'textLeft'}>
+                &lt;<span className={'highLightRed'}>Slider</span>  <br />
+                <div className={'textLeft'}>{_field0}</div>
+                <div className={'textLeft'}>{_field1}</div>
+                /&gt;, container);
               </div>
             </div>
           </Template>
