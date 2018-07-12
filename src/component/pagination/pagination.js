@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import names from 'classnames'
+
 import './index.less';
 
 import leftIcon from './img/left.png';
@@ -54,6 +55,9 @@ export default class Pagination extends React.Component{
 
     this.changePage = this.changePage.bind(this);
     this.go = this.go.bind(this);
+  }
+  componentDidMount() {
+    console.log("--component-pagination--")
   }
 
   componentWillReceiveProps(nextProps) {
@@ -168,10 +172,12 @@ export default class Pagination extends React.Component{
         pageList.push(<li
             className={`${prefixCls}-pageList-basic
           ${prefixCls}-pageList-large
-          ${current === i + 1 ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
+          ${current === i + 1 ? `${prefixCls}-pageList-active` : ''}`}
             key={`page-${i}`}
             onClick={() => this.changePage(i+1)}
-        >{i + 1}</li>)
+        >
+          {i + 1}
+        </li>)
       }
     } else {
       jumpPrev = (
@@ -204,7 +210,7 @@ export default class Pagination extends React.Component{
           <li
               className={`${prefixCls}-pageList-basic
               ${prefixCls}-pageList-${paginationSize}
-              ${current === totalPage ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
+              ${current === totalPage ? `${prefixCls}-pageList-active` : ''}`}
               key={`page-${totalPage}`}
               onClick={() => this.changePage(totalPage)}
           >{totalPage}</li>
@@ -213,7 +219,7 @@ export default class Pagination extends React.Component{
           <li
               className={`${prefixCls}-pageList-basic
               ${prefixCls}-pageList-${paginationSize}
-              ${current === 1 ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
+              ${current === 1 ? `${prefixCls}-pageList-active` : ''}`}
               key={`page-${1}`}
               onClick={() => this.changePage(1)}
           >{1}</li>
@@ -232,10 +238,12 @@ export default class Pagination extends React.Component{
         pageList.push(<li
             className={`${prefixCls}-pageList-basic
           ${prefixCls}-pageList-${paginationSize}
-          ${current === i ? `${prefixCls}-pageList-${paginationSize}-active` : ''}`}
+          ${current === i ? `${prefixCls}-pageList-active` : ''}`}
             key={`page-${i}`}
             onClick={() => this.changePage(i)}
-        >{i}</li>)
+        >
+          {i}
+          </li>)
       }
 
       if (current - 1 >= pageBufferSize * 2 && current !== 1 + 2) {
@@ -255,6 +263,7 @@ export default class Pagination extends React.Component{
 
     return (
         <div className={`${prefixCls}`}>
+          111
           <ul className={`${prefixCls}-pageList`}>
             <li
                 className={`${prefixCls}-pageList-basic
