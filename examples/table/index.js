@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 
 import '../template/index.less';
 import Template from '../template/index';
-import Table from '../../lib/table';
-// import Table from '../../src/component/table';
+// import Table from '../../lib/table';
+import Table from '../../src/component/table';
 
 const dataSource = [{
   key: '1',
