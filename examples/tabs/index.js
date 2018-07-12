@@ -59,6 +59,11 @@ class Index extends React.Component {
   }
 
   render() {
+    let componentStr = "{Tabs}";
+    let _field="paths={getPaths()}";
+    let _braceLeft = "{";
+    let _braceRight = "}";
+
     return (
         <div>
           <Template options={options}>
@@ -68,6 +73,44 @@ class Index extends React.Component {
                 <TabPane tab="Tab 2" key="12">Content of Tab Pane 2</TabPane>
                 <TabPane tab="Tab 3" key="13">Content of Tab Pane 3</TabPane>
               </Tabs>
+            </div>
+
+            {/*代码展示*/}
+            <div className={'showCoding'}>
+              <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span> 'react';</div>
+              <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div>
+              <div><span className={'highLightBlue'}>let</span> TabPane =  Tabs.TabPane;</div><br />
+
+              <div>
+                <span className={'highLightBlue'}>function</span> tabsChange(key) {_braceLeft} <br/>
+                <div className={'textLeft'}>
+                  console.log('--tabs-change--', key);
+                </div>
+                {_braceRight}
+              </div><br/>
+
+              React.render(<br />
+              <div className={'textLeft'}>
+                &lt;div&gt;
+                <div className={'textLeft'}>
+                  &lt;<span className={'highLightRed'}>Tabs</span> defaultActiveKey="12" onChange={_braceLeft}tabsChange{_braceRight} &gt;
+                  <div className={'textLeft'}>
+                    &lt;<span className={'highLightRed'}>TabPane</span> tab="Tab 1" key="11" &gt;
+                    Content of Tab Pane 1
+                    &lt;<span className={'highLightRed'}>TabPane</span> /&gt; <br/>
+
+                    &lt;<span className={'highLightRed'}>TabPane</span> tab="Tab 2" key="12" &gt;
+                    Content of Tab Pane 2
+                    &lt;<span className={'highLightRed'}>TabPane</span> /&gt; <br/>
+
+                    &lt;<span className={'highLightRed'}>TabPane</span> tab="Tab 3" key="13" &gt;
+                    Content of Tab Pane 3
+                    &lt;<span className={'highLightRed'}>TabPane</span> /&gt;
+                  </div>
+                  &lt;<span className={'highLightRed'}>Tabs</span> /&gt;
+                </div>
+                &lt;/div&gt;, container);
+              </div>
             </div>
           </Template>
         </div>
