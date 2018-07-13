@@ -133,7 +133,7 @@ class Index extends React.Component {
     return (
         <div>
           <Template options={options}>
-            <div style={{background: "rgba(0, 0, 0, .1)", padding: '8px', borderRadius: '5px'}}>
+            <div style={{ padding: '8px', borderRadius: '5px'}}>
               <Button onClick={() => this.showModal()}>open modal </Button>
               <Modal
                   title="Basic Modal"
