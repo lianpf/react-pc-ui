@@ -37,16 +37,5 @@ http://localhost:8000
 
 [![rc-pc-ui](https://nodei.co/npm/react-pc-ui.png)](https://www.npmjs.com/package/react-pc-ui)
 
-***
-**loader**  <br />
 
-包 | 作用
-:---- | :----
-babel-cli & babel-preset-react | 解析react
-
-**plugin**  <br />
-
-包 | 作用
-:---- | :----
-clean-webpack-plugin | 清除每次打包原dist内容
 
