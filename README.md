@@ -21,6 +21,15 @@ pagination, 以每周两个的开发进度更新, 谢谢大家支持
 9. Countdown
 10. Pagination
 
+### 重大版本介绍
+version | content | remark
+:--- | :--- | :---
+v1.0.0 | 项目搭建 |
+v1.0.5 | (1)10 个基础组件雏形  <br /> (2)线上文档  <br /> (3)组件库文档首页内容介绍
+v1.0.6 | (1)build:component 多入口自动化配置  <br /> (2)css 样式分离 | 架构
+v1.0.7 | (1)table component style重构  <br /> (2) steps component style重构
+v1.0.8 | (1)pagination 增加 fields  <br /> (2) slider 增加 fields
+
 #### now v1.0.7
 Button、Modal、Table、Message、Breadcrumb、Tabs、Slider、Step、Countdown、Pagination
 
