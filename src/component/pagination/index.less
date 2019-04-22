@@ -9,123 +9,22 @@
   display: inline-block;
   box-sizing: border-box;
 }
+@heightLarge: 32px;
+@heightSmall: 24px;
 :global {
   .@{pagination} {
     width: 100%;
     font-size: @fontSizeNormal;
     color: @color-black;
-
     border: 0;
     zoom: 1;
     overflow: hidden;
     position: relative;
-    @heightLarge: 32px;
-    @heightSmall: 24px;
-
     ul, li{
       list-style: none;
       margin: 0;
       padding: 0;
       .inlineBlock;
-    }
-    &-pageList{
-      display: inline-block;
-      &-basic{
-        vertical-align: top;
-        text-align: center;
-        border-radius: 3px;
-        font-weight: 500;
-        cursor: pointer;
-        img{
-          display: block;
-          width: 16px;
-          height: 16px;
-          margin: 50% auto;
-          transform: translate(0, -50%);
-        }
-      }
-      &-jump-prev-large, &-jump-next-large{
-        &:after {
-          height: @heightLarge;
-          width: @heightLarge;
-          line-height: @heightLarge;
-        }
-      }
-      &-jump-prev-small, &-jump-next-small{
-        &:after {
-          height: @heightSmall;
-          width: @heightSmall;
-          line-height: @heightSmall;
-        }
-      }
-      &-jump-prev, &-jump-next {
-        outline: none;
-        cursor: pointer;
-        &:after {
-          content: "•••";
-          //height: @heightLarge;
-          //width: @heightLarge;
-          //line-height: @heightLarge;
-          text-align: center;
-          display: block;
-          letter-spacing: 2px;
-          color: #ccc;
-          font-size: 12px;
-          margin-top: 1px;
-        }
-        &:hover {
-          &:after {
-            height: @heightLarge;
-            width: @heightLarge;
-            //margin-right: 8px;
-            color: @color-red;
-          }
-        }
-
-      }
-      &-jump-prev {
-        &:hover {
-          &:after {
-            content: "«";
-          }
-        }
-      }
-
-      &-jump-next {
-        &:hover {
-          &:after {
-            content: "»";
-          }
-        }
-      }
-      &-large{
-        width: @heightLarge;
-        height: @heightLarge;
-        border: 1px solid rgba(0, 0, 0, .25);
-        line-height: @heightLarge;
-        &-active{
-          color: @color-red;
-          border: 1px solid @color-red;
-        }
-        &:not(:last-child){
-          margin-right: 8px;
-        }
-      }
-      &-small{
-        width: @heightSmall;
-        height: @heightSmall;
-        line-height: @heightSmall;
-        &-active{
-          color: @color-red;
-          border: 1px solid @color-red;
-        }
-      }
-      &-disabled{
-        cursor: not-allowed;
-        &:hover{
-          cursor: not-allowed;
-        }
-      }
     }
     &-showPage{
       .inlineBlock;
@@ -178,6 +77,99 @@
     &-pageTotal-small {
       margin-left: 10px;
       line-height: @heightSmall;
+    }
+  }
+  .@{pagination}-pageList{
+    display: inline-block;
+    &-basic{
+      vertical-align: top;
+      text-align: center;
+      border-radius: 3px;
+      font-weight: 500;
+      cursor: pointer;
+      img{
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin: 50% auto;
+        transform: translate(0, -50%);
+      }
+    }
+    &-large{
+      width: @heightLarge;
+      height: @heightLarge;
+      line-height: @heightLarge;
+      border: 1px solid rgba(0, 0, 0, .25);
+      &:not(:last-child){
+        margin-right: 8px;
+      }
+    }
+    &-small{
+      width: @heightSmall;
+      height: @heightSmall;
+      line-height: @heightSmall;
+    }
+    &-jump-prev-large, &-jump-next-large{
+      &:after {
+        height: @heightLarge;
+        width: @heightLarge;
+        line-height: @heightLarge;
+        margin-right: 8px;
+      }
+    }
+    &-jump-prev-small, &-jump-next-small{
+      &:after {
+        height: @heightSmall;
+        width: @heightSmall;
+        line-height: @heightSmall;
+      }
+    }
+    &-jump-prev, &-jump-next {
+      outline: none;
+      cursor: pointer;
+      &:after {
+        content: "•••";
+        text-align: center;
+        display: block;
+        letter-spacing: 2px;
+        color: #ccc;
+        font-size: 12px;
+        margin-top: 1px;
+      }
+      //&:hover {
+      //  color: @color-red;
+      //  &:after {
+      //    height: @heightLarge;
+      //    width: @heightLarge;
+      //  }
+      //}
+    }
+    &-jump-prev {
+      &:hover {
+        &:after {
+          content: "«";
+        }
+      }
+    }
+
+    &-jump-next {
+      &:hover {
+        &:after {
+          content: "»";
+        }
+      }
+    }
+
+    &-active{
+      color: @color-red;
+      //border-color: @color-red;
+      border: 1px solid @color-red;
+    }
+    &-disabled{
+      cursor: not-allowed;
+      &:hover{
+        cursor: not-allowed;
+      }
     }
   }
 }

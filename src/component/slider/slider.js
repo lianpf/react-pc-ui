@@ -139,6 +139,7 @@ export default class Index extends React.Component{
 
   render(){
     const { disabled } = this.props;
+    let hasColor = !!(this.props.color && this.props.color.length > 0);
     return (
         <div className={`${prefixCls}`}>
           <div className={`${prefixCls}-h`}
@@ -148,10 +149,12 @@ export default class Index extends React.Component{
           >
             <div
                 className={`${prefixCls}-h-line`}
+                style={hasColor ? {background: this.props.color} : {}}
             ></div>
             {
               !disabled ? (<div
                   className={`${prefixCls}-h-mark`}
+                  style={hasColor ? {borderColor: this.props.color} : {}}
               ></div>) : ''
             }
 

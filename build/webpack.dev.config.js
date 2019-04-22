@@ -13,11 +13,15 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = merge(webpackBaseConfig, {
   entry: {
-    app: './examples/index',
+    index: './examples/index',
     // vendors: './src/vendors.js'
   },
+  // devServer: {
+  //   contentBase: './examples/dist',
+  //   hot: true
+  // },
   output: {
-    filename: '[name].js',
+    filename: '[name].[hash].js',
     path: path.join(__dirname, '../examples/dist'),
     publicPath: '',
     chunkFilename: '[name].chunk.js'
