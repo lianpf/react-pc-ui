@@ -4,8 +4,10 @@ import {connect} from 'react-redux';
 import names from 'classnames';
 import './index.less';
 
-import Pagination from '../../../lib/pagination';
-// import Pagination from '../pagination';
+// import Pagination from '../../../lib/pagination';
+import Pagination from '../pagination';
+
+const prefixCls = 'react-pc-ui-table';
 
 class Index extends React.Component {
   static defaultProps = {
@@ -94,13 +96,13 @@ class Index extends React.Component {
     let { pagination } = this.props;
     // console.log("--pagination-child--", pagination);
     return (
-        <div className={names("table-wrapper")}>
-          <table className={names('table')}>
+        <div className={names(`${prefixCls}`)}>
+          <table className={names(`${prefixCls}-main`)}>
             {this.renderHeader()}
             {this.renderBody()}
           </table>
           {
-            !!pagination ? (<div className={names('pager')}>
+            !!pagination ? (<div className={names(`${prefixCls}-pager`)}>
               <Pagination {...pagination} />
             </div>) : ''
           }

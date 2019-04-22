@@ -11,93 +11,43 @@ const options = {
   title: 'Button',
   desc: '按钮组件',
   func: 'onClick',
-  params:[{
-    name: 'type',
-    des: '按钮大小',
-    type: 'String',
-    values:[{
-        name: 'default',
-        value: 'default',
+  params:[],
+  api: [
+    {
+      name: 'Button 配置参数',
+      dataSource: [{
+        param: 'type',
+        desc: '按钮大小 default、large、small',
+        type: 'String',
+        default: 'default',
       }, {
-      name: 'large',
-      value: 'large',
-    }, {
-      name: 'small',
-      value: 'small',
-    }],
-    default: 'default'
-  }, {
-    name: 'bgColor',
-    desc: '按钮背景色',
-    type: 'String',
-    values:[
-      {
-        name: '16进制',
-        value: '#1E90FF',
-      }, {
-        name: 'RGB',
-        value: 'rgb(123,104,238)',
-      }, {
-        name: '颜色英文名称',
-        value: 'LightCoral',
-      }
-    ],
-    default: '#DA3D42'
-  }, {
-    name: 'color',
-    desc: '按钮文本景色',
-    type: 'String',
-    values:[
-      {
-        name: '16进制',
-        value: '#fff',
-      }, {
-        name: 'RGB',
-        value: 'rgb(0,0,0)',
-      }, {
-        name: '颜色英文名称',
-        value: 'black',
-      }
-    ],
-    default: '#fff'
-  }, {
-    name: 'disabled',
-    desc: '按钮禁用',
-    type: 'Boolean',
-    values:[
-      {
-        name: '是',
-        value: true,
-      },
-      {
-        name: '否',
-        value: false,
-      }
-    ],
-    default: 'false'
-  }, {
-    name: 'radius',
-    desc: '按钮圆角大小',
-    type: 'Number',
-    values:[
-      {
-        name: 'number数字',
-        value: '5',
-      }
-    ],
-    default: '20'
-  }, {
-    name: 'fontSize',
-    desc: '设置按钮字体大小',
-    type: 'Number',
-    values:[
-      {
-        name: 'number数字',
-        value: '18',
-      }
-    ],
-    default: '16'
-  }]
+          param: 'bgColor',
+          desc: '按钮背景色 16进制、RGB、颜色英文名称',
+          type: 'String',
+          default: '#DA3D42',
+        },{
+        param: 'color',
+        desc: '按钮文本颜色 16进制、RGB、颜色英文名称',
+        type: 'String',
+        default: '#fff',
+      },{
+        param: 'disabled',
+        desc: '按钮禁用状态 true、false',
+        type: 'Boolean',
+        default: 'false',
+      },{
+        param: 'radius',
+        desc: '按钮圆角大小',
+        type: 'Number',
+        default: '20',
+      },{
+        param: 'fontSize',
+        desc: '设置按钮字体大小',
+        type: 'Number',
+        default: '16',
+      }]
+    }
+  ]
 };
 
 class Index extends React.Component {
@@ -111,30 +61,35 @@ class Index extends React.Component {
   }
 
   render() {
+    let componentStr = "{Button}";
+    let _field="onClick={clickFunc}";
+    let _braceLeft = "{";
+    let _braceRight = "}";
+
     return (
         <Template options={options}>
-          <div className={'component-demo-list'}>
-            {
-              options.params.length && options.params.map((item, index) => {
-                return (
-                    <DemoPanel item={item} key={index}>
-                      {
-                        item.values.length && item.values.map((demo, key) => {
-                          let params = {
-                            [item.name]: demo.value
-                          };
-                          return (
-                              <div className={'show-demo-item'} key={`${index}-${key}`}>
-                                <span>{demo.name}: {demo.value}</span>
-                                <Button {...params} onClick={this.onClick}>{options.title}</Button>
-                              </div>
-                          )
-                        })
-                      }
-                    </DemoPanel>
-                );
-              })
-            }
+          <Button onClick={this.onClick}>default button</Button>
+
+          {/*代码展示*/}
+          <div className={'showCoding'}>
+            <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span> 'react';</div>
+            <div><span className={'highLightBlue'}>import</span> { componentStr } <span className={'highLightBlue'}>from</span> 'react-pc-ui';</div><br />
+
+            <div>
+              <span className={'highLightBlue'}>function</span> clickFunc(){_braceLeft} <br/>
+              <div className={'textLeft'}>
+                console.log('--button-onClick--');
+              </div>
+              {_braceRight}
+            </div><br/>
+
+            React.render(<br />
+            <div className={'textLeft'}>
+              &lt;<span className={'highLightRed'}>Button</span> {_field}&gt;
+              default button
+              &lt;/ <span className={'highLightRed'}>Button</span> &gt;
+              , container);
+            </div>
           </div>
         </Template>
     );

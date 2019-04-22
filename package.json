@@ -1,6 +1,6 @@
 {
   "name": "react-pc-ui",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "\"React PC 组件库(React pc component library)\"",
   "main": "index.js",
   "scripts": {

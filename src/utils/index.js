@@ -68,3 +68,19 @@ export function toggleClass(node, className, setting) {
 export function unique(array) {
   return Array.from(new Set(array))
 }
+
+/***
+ * 是否支持 flex 布局
+ * @param null
+ * @returns bool
+ */
+export function isFlexSupported() {
+  if (typeof window !== 'undefined' && window.document && window.document.documentElement) {
+    const { documentElement } = window.document;
+    return 'flex' in documentElement.style ||
+        'webkitFlex' in documentElement.style ||
+        'Flex' in documentElement.style ||
+        'msFlex' in documentElement.style;
+  }
+  return false;
+}

@@ -64,10 +64,49 @@ class Index extends React.Component {
   }
 
   render() {
+    let componentStr = "{Message, Button}";
+    let _field = "onClick={() => this.showModal()";
+    let _braceLeft = "{";
+    let _braceRight = "}";
+
     return (
         <div>
           <Template options={options}>
             <Button onClick={() => this.showMessage()}>open message </Button>
+
+            {/*代码展示*/}
+            <div className={'showCoding'}>
+              <div><span className={'highLightBlue'}>import</span> React <span className={'highLightBlue'}>from</span>
+                'react';
+              </div>
+              <div><span className={'highLightBlue'}>import</span> {componentStr} <span
+                  className={'highLightBlue'}>from</span> 'react-pc-ui';
+              </div>
+              <br/>
+
+              <div>
+                <span className={'highLightBlue'}>function</span> showMessage() {_braceLeft} <br/>
+                <div className={'textLeft'}>
+                  Message.error( "I am message", () => {_braceLeft} <br />
+                  <div className={'textLeft'}>
+                    console.log('See! I am the action after close message!')
+                  </div>
+                  {_braceRight});
+                </div>
+                {_braceRight}
+              </div>
+              <br/>
+
+              React.render(<br/>
+              &lt;div&gt;
+              <div className={'textLeft'}>
+                &lt;<span className={'highLightRed'}>Button</span> onClick={_braceLeft}showMessage(){_braceRight}&gt;
+                open message
+                &lt;<span className={'highLightRed'}>Button</span> /&gt;
+              </div>
+
+              &lt;/div&gt;, container);
+            </div>
           </Template>
         </div>
     );
