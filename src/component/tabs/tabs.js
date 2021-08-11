@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import names from 'classnames'
 import './index.less';
@@ -76,6 +77,7 @@ export default class Tabs extends React.Component{
 
   getTabsNav(props) {
     const { activeKey } = this.state;
+    console.log('-activeKey--', activeKey)
     if (props.children) {
       return (
           <ul className={`${prefixCls}-nav`}>

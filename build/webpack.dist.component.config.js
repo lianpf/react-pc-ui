@@ -41,6 +41,7 @@ module.exports = merge(webpackBaseConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  mode: 'production',
   externals: {
     'react': 'react',
     'react-dom': 'react-dom',

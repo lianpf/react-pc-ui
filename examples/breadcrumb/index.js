@@ -5,7 +5,7 @@ import '../template/index.less';
 import Template from '../template/index';
 import '../utils/common.less';
 
-import Breadcrumb from '../../lib/breadcrumb/index';
+import Breadcrumb from '../../lib/breadcrumb';
 
 const options = {
   title: 'Breadcrumb',

@@ -16,8 +16,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 //   }, 'table')
 // };
 
-import Button from './button/index';
-import Table from './table/index';
+// import Button from './button/index';
+// import Table from './table/index';
 import Layout from './layout/index';
 
 export const routes = [
