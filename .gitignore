@@ -13,3 +13,6 @@ npm-debug.log*
 /*.zip
 # 忽略package-lock.json文件
 package-lock.json
+
+# 忽略 package 打包文件
+/lib/*/*.js
